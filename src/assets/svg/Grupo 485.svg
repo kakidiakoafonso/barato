@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="101" height="101" viewBox="0 0 101 101">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.546" cy="0.76" r="1.274" gradientTransform="matrix(-0.026, 1, 1.316, 0.035, -0.316, 0.141)" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#00c77c"/>
+      <stop offset="1" stop-color="#c2e952"/>
+    </radialGradient>
+  </defs>
+  <g id="Grupo_485" data-name="Grupo 485" transform="translate(-157 -285)">
+    <circle id="Elipse_14" data-name="Elipse 14" cx="50.5" cy="50.5" r="50.5" transform="translate(157 285)" fill="url(#radial-gradient)"/>
+    <g id="Grupo_368" data-name="Grupo 368" transform="translate(65.411 -372.256)">
+      <g id="cart" transform="translate(114.589 680.556)">
+        <path id="Caminho_69" data-name="Caminho 69" d="M0,4.063A1.813,1.813,0,0,1,1.813,2.25h5.44A1.813,1.813,0,0,1,9.012,3.625L10.482,9.5H52.588a1.813,1.813,0,0,1,1.781,2.147l-5.44,29.014a1.813,1.813,0,0,1-1.781,1.48H14.507a1.813,1.813,0,0,1-1.781-1.48L7.289,11.705,5.84,5.877H1.813A1.813,1.813,0,0,1,0,4.063ZM11.249,13.13l4.762,25.387H45.643L50.4,13.13Zm6.884,29.014A7.253,7.253,0,1,0,25.387,49.4,7.254,7.254,0,0,0,18.134,42.144Zm25.387,0A7.253,7.253,0,1,0,50.775,49.4,7.254,7.254,0,0,0,43.521,42.144ZM18.134,45.771A3.627,3.627,0,1,0,21.761,49.4,3.627,3.627,0,0,0,18.134,45.771Zm25.387,0A3.627,3.627,0,1,0,47.148,49.4,3.627,3.627,0,0,0,43.521,45.771Z" transform="translate(0 -2.25)" fill="#fff" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

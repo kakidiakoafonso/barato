@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.289" height="29.834" viewBox="0 0 25.289 29.834">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1.307" y1="1" x2="-0.145" y2="-0.968" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2cbf88"/>
+      <stop offset="1" stop-color="#b9e33f"/>
+      <stop offset="1" stop-color="#2cbf88"/>
+      <stop offset="1" stop-color="#b9e33f"/>
+      <stop offset="1"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1.307" y1="1" x2="-0.145" y2="-0.968" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2cbf88"/>
+      <stop offset="0.624" stop-color="#b9e33f"/>
+      <stop offset="1" stop-color="#2cbf88"/>
+      <stop offset="1" stop-color="#b9e33f"/>
+      <stop offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="papel-higienico" transform="translate(-2 3.939)">
+    <g id="Grupo_289" data-name="Grupo 289" transform="translate(2 -3.939)">
+      <ellipse id="Elipse_13" data-name="Elipse 13" cx="0.637" cy="1.911" rx="0.637" ry="1.911" transform="translate(5.432 8.175)" fill="url(#linear-gradient)"/>
+      <path id="Caminho_115" data-name="Caminho 115" d="M58.7,0H44.536C41.427.051,39,4.1,39,9.265s2.427,9.214,5.536,9.264h3.9v8.1a.874.874,0,0,0,.213.572l2.014,2.331a.874.874,0,0,0,1.323,0l1.353-1.566,1.353,1.565a.874.874,0,0,0,1.323,0l1.353-1.566,1.353,1.566a.874.874,0,0,0,1.322,0L61.4,27.966l1.354,1.566a.875.875,0,0,0,1.535-.572V9.265C64.289,4.07,61.832,0,58.7,0ZM40.748,9.265c0-4.207,1.855-7.517,3.846-7.517,2.03,0,3.846,3.4,3.846,7.517,0,4.207-1.855,7.517-3.846,7.517C42.564,16.782,40.748,13.384,40.748,9.265ZM47.9,16.782a7.36,7.36,0,0,0,.536-.733v.733Zm14.638,9.831c-.471-.544-.65-.857-1.141-.857a.874.874,0,0,0-.661.3l-1.354,1.566-1.353-1.566a.874.874,0,0,0-1.323,0l-1.353,1.566L54,26.058a.874.874,0,0,0-1.323,0l-1.353,1.566L50.188,26.3V9.265A11.937,11.937,0,0,0,47.9,1.748H58.7c2.03,0,3.846,3.4,3.846,7.517Z" transform="translate(-39)" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>
