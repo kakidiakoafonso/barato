@@ -44,14 +44,7 @@ inputWraper:
 },
 iconSearch:{color:corPrimaria},
 iconUser:{color:'white'},
-logoIcon:
-{
-    width:'81%',
-    alignSelf:'flex-end',
-    flexDirection:'row',
-    justifyContent:'space-around',
-    alignItems:'center'
-}
+
 
 
 

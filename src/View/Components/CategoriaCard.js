@@ -1,20 +1,18 @@
 import React from 'react'
 import { TouchableOpacity,View, Text ,Image,StyleSheet,Dimensions} from 'react-native'
-import Frutas from '../../assets/svg/healthy-food.svg'
-import Pestisco from '../../assets/svg/Grupo 280.svg'
 import { useNavigation } from '@react-navigation/native';
 
 
-export default function CategoriaCard({SVG,titulo,Screen}) 
+export default function CategoriaCard({data}) 
 {
     const navigation = useNavigation()
     return (
             <TouchableOpacity 
-                onPress={()=>navigation.navigate('home')}
+                onPress={()=>navigation.navigate('home',{categoria:data.categoria})}
                 activeOpacity={0.5} style={styles.categoriaInfo}>
-                <SVG width={50} height={40}/>
+                <Image source={{uri:data.img}} style={{width:50,height:50,borderRadius:5}}/>
                 <Text style={styles.txt}>
-                    {titulo}
+                    {data.titulo}
                 </Text>
             </TouchableOpacity>
     )

@@ -19,6 +19,9 @@ import Bioseguranca from '../../assets/svg/Caminho 170.svg'
 import Higiene from '../../assets/svg/artigos-de-higiene-pessoal.svg'
 
 
+//Dados
+import CategoriaData  from '../../data/API'
+
 
 
 const categorias = [1,2,3,4,5,6,7,8,9,10,11,12]
@@ -49,15 +52,13 @@ export default function Categorias() {
                 <Text style={styles.txtCategorias}>Categorias</Text>
             </View>
             <View style={styles.categoriasWraper}>
-                <CategoriaCard SVG={Frutas} titulo='Frutas e legumes' screen={'frutas'}/>
-                <CategoriaCard SVG={Pestisco} titulo='Petisco' screen={'petisco'}/>
-                <CategoriaCard SVG={Condimento} titulo='Petisco'/>
-                <CategoriaCard SVG={Alcool} titulo='Petisco'/>
-                <CategoriaCard SVG={Padaria} titulo='Petisco'/>
-                <CategoriaCard SVG={Lacticios} titulo='Petisco'/>
-                <CategoriaCard SVG={Cha} titulo='Petisco'/>
-                <CategoriaCard SVG={Bioseguranca} titulo='Petisco'/>
-                <CategoriaCard SVG={Higiene} titulo='Petisco'/>
+                
+               {
+                   CategoriaData.map((e, key)=>(
+                    <CategoriaCard key={key} img={e.img} titulo={e.titulo}  data={e}/>
+                   ))
+               }
+
             </View>
         </View>
         </View>

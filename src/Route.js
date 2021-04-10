@@ -12,6 +12,12 @@ import SignUpTelefone from './View/SignUpTelefone/SignUpTelefone'
 import Splash from './View/Splash'
 import Verify from './View/Verify/Verify'
 import Home from './View/Home/Home';
+import Carrinho from './View/Carrinho/Carrinho';
+import Favoritos from './View/Favoritos/Favoritos';
+import Perfil from './View/Perfil/Perfil';
+
+//Components
+import TabBar from './View/Components/TabBar';
 
 //Cores 
 const corPrimaria = '#2CBF88'
@@ -32,14 +38,12 @@ export default function App() {
 const Tab = createBottomTabNavigator();
 const TabRoute = () =>{
     return (
-    <Tab.Navigator>
+    <Tab.Navigator >
         <Tab.Screen name="categorias" component={Categorias} />
         <Tab.Screen name="home" component={Home} />
-        <Tab.Screen name='splash' component={Splash} />
-        <Tab.Screen name='sign' component={Sign}  />
-        <Tab.Screen  name='detail' component={Detail} />
-        <Tab.Screen name='verify' component={Verify} />
-        <Tab.Screen name='signuptelefone' component={SignUpTelefone} />
+        <Tab.Screen name="carrinho" component={Carrinho} />
+        <Tab.Screen name='favoritos' component={Favoritos} />
+        <Tab.Screen name='perfil' component={Perfil}  />
     </Tab.Navigator>
 )}
 
