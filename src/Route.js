@@ -24,6 +24,21 @@ const corPrimaria = '#2CBF88'
 const corSecudaria = '#313131'
 const corTerciaria = '#efefef'
 
+
+//SVG
+import CarrinhoIcon from './assets/svg/Grupo 481.svg'
+import CarrinhoIcon2 from './assets/svg/Grupo 368.svg'
+
+import HomeIcon from './assets/svg/house-1.svg'
+import HomeIcon2 from './assets/svg//house.svg'
+
+import FavoritoIcon2 from './assets/svg/suit-heart.svg'
+import FavoritoIcon from './assets/svg/suit-heart-1.svg'
+
+import PerfilIcon2 from './assets/svg/person.svg'
+import PerfilIcon from './assets/svg/person-1.svg'
+
+
 const Stack = createStackNavigator()
 
 export default function App() {
@@ -38,12 +53,16 @@ export default function App() {
 const Tab = createBottomTabNavigator();
 const TabRoute = () =>{
     return (
-    <Tab.Navigator >
-        <Tab.Screen name="categorias" component={Categorias} />
-        <Tab.Screen name="home" component={Home} />
-        <Tab.Screen name="carrinho" component={Carrinho} />
-        <Tab.Screen name='favoritos' component={Favoritos} />
-        <Tab.Screen name='perfil' component={Perfil}  />
+    <Tab.Navigator tabBar={(props)=><TabBar {...props}/>} >
+        <Tab.Screen name="home" component={Home} 
+            initialParams={{titulo:'Home',icon: ()=> <HomeIcon width={20} height={20}/>, icon2: ()=> <HomeIcon2 width={20} height={20} />}} />
+        <Tab.Screen name="carrinho" component={Carrinho} 
+            initialParams={{titulo:'Carrinho',icon: ()=> <CarrinhoIcon width={20} height={20}/>,icon2: ()=> <CarrinhoIcon2 width={20} height={20}/>}}/>
+        <Tab.Screen name='favoritos' component={Favoritos} 
+            initialParams={{titulo:'Favoritos',icon: ()=> <FavoritoIcon width={20} height={20}/>,icon2: ()=> <FavoritoIcon2 width={20} height={20}/>}}/>
+        <Tab.Screen name='perfil' component={Perfil}  
+            initialParams={{titulo:'Perfil',icon: ()=> <PerfilIcon width={20} height={20}/>,icon2: ()=> <PerfilIcon2 width={20} height={20}/>}}/>
+        {/*<Tab.Screen name="categorias" component={Categorias} /> */}
     </Tab.Navigator>
 )}
 

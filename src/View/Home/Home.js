@@ -17,7 +17,8 @@ import {produtos} from '../../data/API'
 
 export default function Home({navigation , route}) 
 {
-    const {categoria} = route.params
+    //const {categoria} = route.params
+    const categoria = "Frutas"
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>

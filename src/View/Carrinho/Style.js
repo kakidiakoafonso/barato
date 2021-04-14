@@ -34,6 +34,7 @@ const style = StyleSheet.create({
         borderRadius:100
     },
     //Carrinho com itens
+    
 })
 
 export default style;
