@@ -25,8 +25,7 @@ export default function Favoritos({navigation})
         
             <FavoritoItem/>
             <FavoritoItem/>
-        
-        
+    
         
         </View>
     )

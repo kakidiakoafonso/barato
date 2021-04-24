@@ -13,8 +13,8 @@ export default function FavoritoItem() {
                 <View style={{width:'75%'}}>
                     <View style={{height:'45%',flexDirection:'row',justifyContent:'space-between'}}>
                         <View style={{justifyContent:'space-between',marginTop:10,marginLeft:10}}>
-                            <Text>Manga</Text>
-                            <Text>100 KG</Text>
+                            <Text style={{fontFamily:'Montserrat-Regular'}}>Manga</Text>
+                            <Text style={{fontFamily:'Montserrat-Regular'}}>100 KG</Text>
                         </View>
                         <TouchableOpacity>
                             <Coracao width={20} height={20}/>
@@ -23,9 +23,9 @@ export default function FavoritoItem() {
                     <View style={{height:'45%',justifyContent:'space-between',alignItems:'flex-end',flexDirection:'row'}}>
                         <TouchableOpacity activeOpacity={0.5} style={{borderColor:'#2cbf88',borderWidth:1,width:120,alignItems:'center',
                             height:25,justifyContent:'center',borderRadius:13,marginLeft:10}}>
-                            <Text style={{color:'#2cbf88'}}>Adicionar</Text>
+                            <Text style={{color:'#2cbf88',fontFamily:'Montserrat-Regular'}}>Adicionar</Text>
                         </TouchableOpacity>
-                        <Text style={{fontWeight:'bold'}}>100 KZ</Text>
+                        <Text style={{fontFamily:'Montserrat-Bold'}}>100 KZ</Text>
                     </View>
                 </View>
         </View>

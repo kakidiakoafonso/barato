@@ -20,11 +20,11 @@ const style = StyleSheet.create({
 
     txtNenum:
     {
-        fontWeight:'bold',fontSize:20
+        fontFamily:'Montserrat-Bold',fontSize:20
     },
     txtadd:
     {
-        fontSize:16
+        fontSize:16,fontFamily:'Montserrat-Regular'
     },
     svgContainer:
     {

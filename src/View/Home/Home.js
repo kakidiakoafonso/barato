@@ -22,11 +22,11 @@ export default function Home({navigation , route})
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
-                 <Text style={{fontSize:30, color:'white',fontWeight:'bold'}}>Barato</Text>
+                 <Text style={{fontSize:30, color:'white',fontFamily:'Montserrat-Bold'}}>Barato</Text>
                 
                 <View style={styles.inputWraper}>
                     <TextInput placeholder={"Pesquisar"}
-                        style={{width:'80%'}}
+                        style={{width:'80%',fontFamily:'Montserrat-Regular'}}
                         placeholderTextColor={'#ccc'}/>
                     <Icon name="search-outline" type='Ionicons' style={styles.iconSearch}/>
                 </View>
@@ -44,7 +44,7 @@ export default function Home({navigation , route})
                 </ScrollView>
             </View>
             <View style={{flex:1}}>
-                <Text style={{fontSize:20}}> {categoria}</Text>
+                <Text style={{fontSize:20,fontFamily:'Montserrat-Regular'}}> {categoria}</Text>
                 <View style={{flex:1,marginTop:5,flexDirection:'row',flexWrap:'wrap'}}>
                     {
                         produtos.map((item,i)=>(

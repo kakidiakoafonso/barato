@@ -19,8 +19,8 @@ export default function CarinhoItens() {
                 <View style={{width:'60%',height:100,justifyContent:'space-between',marginLeft:10}}>
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                         <View>
-                            <Text style={{color:'#323232'}}>Manga</Text>
-                            <Text style={{color:'#323232'}}>100 KG</Text>
+                            <Text style={{color:'#323232',fontFamily:'Montserrat-Regular'}}>Manga</Text>
+                            <Text style={{color:'#323232',fontFamily:'Montserrat-Regular'}}>100 KG</Text>
                         </View>
                         <TouchableOpacity>
                             <DeleteIcon width={20} height={20}/>
@@ -32,10 +32,10 @@ export default function CarinhoItens() {
                             height:22,borderRadius:15
                         }}>
                             <Icon name='minus' type='AntDesign' style={{fontSize:16, color:'white'}}/>
-                            <Text style={{fontSize:14,fontWeight:'bold',color:'white'}}>1</Text>
+                            <Text style={{fontSize:14,fontFamily:'Montserrat-Bold',color:'white'}}>1</Text>
                             <Icon name='plus' type='AntDesign' style={{fontSize:16,color:'white'}}/>
                         </View>
-                        <Text>100 Kz</Text>
+                        <Text style={{fontFamily:'Montserrat-Regular'}}>100 Kz</Text>
                     </View>
                 </View>
         </View>

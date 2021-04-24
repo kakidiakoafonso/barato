@@ -52,7 +52,7 @@ const Tab =({Icone,Icone2, activo, onPress,titulo})=>
         <TouchableOpacity  style={{alignItems:'center'}}
         onPress={()=> onPress()}>
              { activo? <Icone2/>:<Icone/>}
-             <Text>{titulo}</Text>
+             <Text style={{fontFamily:'Montserrat-Regular'}}>{titulo}</Text>
         </TouchableOpacity>
     )
 }

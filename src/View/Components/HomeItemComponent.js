@@ -21,14 +21,14 @@ export default function HomeItemComponent({item})
 
     return (
         <View 
-            activeOpacity={0.8}  style={{width:165,height:150,borderWidth:1,marginHorizontal:5,padding:5,
+            activeOpacity={0.8}  style={{width:110,height:150,borderWidth:1,marginHorizontal:5,padding:5,
             borderColor:'#efefef',elevation:1.4,marginTop:10,borderRadius:5}}>
             <View style={{height:'82%',alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
                 <Image source={{uri:item.img}} 
                     style={{width:'50%',height:'80%',borderRadius:8}}/>
                 <View style={{width:'30%',height:'80%',marginLeft:5}}>
-                    <Text style={{fontSize:12,color:'#000',fontWeight:'bold'}}>{item.preco} Kz</Text>
-                    <Text style={{fontSize:11,color:'#000',marginTop:3}}>
+                    <Text style={{fontSize:12,color:'#000',fontFamily:'Montserrat-Bold'}}>{item.preco} Kz</Text>
+                    <Text style={{fontSize:11,color:'#000',marginTop:3,fontFamily:'Montserrat-Regular'}}>
                         {item.nome}
                     </Text>
                 </View>
@@ -44,7 +44,7 @@ const Adicionar = () =>
     return(
         <TouchableOpacity activeOpacity={0.4} style={{borderColor:verde,borderWidth:1,height:'18%',borderRadius:10,
             justifyContent:'center',alignItems:'center'}}>
-                <Text style={{color:verde}}>Adicionar</Text>
+                <Text style={{color:verde,fontFamily:'Montserrat-Regular'}}>Adicionar</Text>
             </TouchableOpacity>
     )
 }
@@ -58,7 +58,7 @@ const Adicionado = () =>
                 <TouchableOpacity>
                     <Icon name='plus' type='AntDesign' style={{fontSize:20,marginLeft:5, color:'white'}}/>
                 </TouchableOpacity>
-                <Text style={{color:'white',fontSize:18,fontWeight:'bold'}}>1</Text>
+                <Text style={{color:'white',fontSize:18,fontFamily:'Montserrat-Bold'}}>1</Text>
                 <TouchableOpacity>
                     <Icon name='plus' type='AntDesign' style={{fontSize:20,marginRight:5, color:'white'}}/>
                 </TouchableOpacity>
