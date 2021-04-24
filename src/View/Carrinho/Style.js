@@ -35,6 +35,15 @@ const style = StyleSheet.create({
     },
     //Carrinho com itens
     
+    //Vericar
+    btnVericar:
+    {
+        backgroundColor:verde,width:200,height:40,
+        alignItems:'center',justifyContent:'center',
+        borderRadius:20,marginBottom:5,
+    },
+    btnVericarTxt:
+    {fontFamily:'Montserrat-Bold',color:'white'}
 })
 
 export default style;

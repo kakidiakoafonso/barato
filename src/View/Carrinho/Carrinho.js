@@ -8,6 +8,7 @@ import IconVoltar from '../../assets/svg/arrow-left-short.svg'
 import CarrinhoVazio from '../../assets/svg/Grupo 484.svg'
 import DeleteIcon from '../../assets/svg/delete.svg'
 import CarinhoItens from '../Components/CarinhoItens'
+import { useNavigation } from '@react-navigation/core'
 
 export default function Carrinho({navigation}) 
 {
@@ -28,6 +29,9 @@ export default function Carrinho({navigation})
             {
                 carrinhoVazio? <CarrinhoVazioComponent/> : <CarrinhoComponent/>
             }
+
+            
+            
         </View>
     )
 }
@@ -39,13 +43,21 @@ export default function Carrinho({navigation})
 
 const CarrinhoComponent =()=>
 {
+    const nav = useNavigation()
     return(
-        <ScrollView showsVerticalScrollIndicator={false} style={style.container}>
-            <CarinhoItens/>
-            <CarinhoItens/>
-            <CarinhoItens/>
-            <CarinhoItens/>
-        </ScrollView>
+        <View  style={{flex:1}}>
+            <ScrollView showsVerticalScrollIndicator={false} style={style.container}>
+                <CarinhoItens/>
+                <CarinhoItens/>
+                <CarinhoItens/>
+                <CarinhoItens/>
+            </ScrollView>
+            <View style={{width:'100%',height:40,alignItems:'center',justifyContent:'flex-end'}}>
+                <TouchableOpacity style={style.btnVericar} onPress={()=>nav.navigate('detailProduto')}>
+                    <Text style={style.btnVericarTxt}>Verificar</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
     )
 }
 

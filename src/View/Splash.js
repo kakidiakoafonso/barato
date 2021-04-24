@@ -13,12 +13,12 @@ const Splash = () =>
     useEffect(() =>
     {
         setTimeout(() => {
-            navigation.navigate('sign')
+            navigation.navigate('categorias')
         }, 3000);
     }, [])
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor={corPrimaria}/>
+            {/*<StatusBar backgroundColor={corPrimaria}/>*/}
             <Image source={require('../assets/img/logo.png')} style={styles.logo}/>
         </View>
     )
@@ -33,9 +33,5 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:'center',
         justifyContent:'center'
-    },
-    logo:
-    {
-        
     }
 })

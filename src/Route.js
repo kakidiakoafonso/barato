@@ -37,6 +37,7 @@ import FavoritoIcon from './assets/svg/suit-heart-1.svg'
 
 import PerfilIcon2 from './assets/svg/person.svg'
 import PerfilIcon from './assets/svg/person-1.svg'
+import DetalheProduto from './View/DetalheProduto/DetalheProduto';
 
 
 const Stack = createStackNavigator()
@@ -44,7 +45,16 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <TabRoute/>
+      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='splash'>
+            <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
+            <Stack.Screen name='splash' component={Splash} />
+            <Stack.Screen name='sign' component={Sign}  />
+            <Stack.Screen  name='detail' component={Detail} />
+            <Stack.Screen  name='detailProduto' component={DetalheProduto} />
+            <Stack.Screen name='verify' component={Verify} />
+            <Stack.Screen name='signuptelefone' component={SignUpTelefone} />
+            <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -62,20 +72,8 @@ const TabRoute = () =>{
             initialParams={{titulo:'Favoritos',icon: ()=> <FavoritoIcon width={20} height={20}/>,icon2: ()=> <FavoritoIcon2 width={20} height={20}/>}}/>
         <Tab.Screen name='perfil' component={Perfil}  
             initialParams={{titulo:'Perfil',icon: ()=> <PerfilIcon width={20} height={20}/>,icon2: ()=> <PerfilIcon2 width={20} height={20}/>}}/>
-        {/*<Tab.Screen name="categorias" component={Categorias} /> */}
     </Tab.Navigator>
 )}
 
 
 
-const StackRoute = () =>{
-    return (
-        <Drawer.Navigator >
-        <Drawer.Screen name="categorias" component={TabRoute} />
-        <Drawer.Screen name='splash' component={Splash} />
-        <Drawer.Screen name='sign' component={Sign}  />
-        <Drawer.Screen  name='detail' component={Detail} />
-        <Drawer.Screen name='verify' component={Verify} />
-        <Drawer.Screen name='signuptelefone' component={SignUpTelefone} />
-        </Drawer.Navigator>
-)}

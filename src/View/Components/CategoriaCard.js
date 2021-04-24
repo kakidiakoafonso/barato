@@ -8,7 +8,7 @@ export default function CategoriaCard({data})
     const navigation = useNavigation()
     return (
             <TouchableOpacity 
-                onPress={()=>navigation.navigate('home',{categoria:data.categoria})}
+                onPress={()=>navigation.navigate('tab',{categoria:data.categoria})}
                 activeOpacity={0.5} style={styles.categoriaInfo}>
                 <Image source={{uri:data.img}} style={{width:50,height:50,borderRadius:5}}/>
                 <Text style={styles.txt}>
