@@ -13,7 +13,7 @@ const  cinzaEscuro= '#cecece'
 const style = StyleSheet.create({
     container:
     {
-        flex:1,
+        flex:1
     },
 
     //Carrinho vazio Style
@@ -41,6 +41,9 @@ const style = StyleSheet.create({
         backgroundColor:verde,width:200,height:40,
         alignItems:'center',justifyContent:'center',
         borderRadius:20,marginBottom:5,
+        position:"absolute",
+        alignSelf:'center',
+        bottom:0
     },
     btnVericarTxt:
     {fontFamily:'Montserrat-Bold',color:'white'}

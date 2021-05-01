@@ -52,11 +52,11 @@ const CarrinhoComponent =()=>
                 <CarinhoItens/>
                 <CarinhoItens/>
             </ScrollView>
-            <View style={{width:'100%',height:40,alignItems:'center',justifyContent:'flex-end'}}>
-                <TouchableOpacity style={style.btnVericar} onPress={()=>nav.navigate('detailProduto')}>
+            
+                <TouchableOpacity activeOpacity={0.8} style={style.btnVericar} onPress={()=>nav.navigate('detailProduto')}>
                     <Text style={style.btnVericarTxt}>Verificar</Text>
                 </TouchableOpacity>
-            </View>
+            
         </View>
     )
 }

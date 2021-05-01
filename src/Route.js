@@ -38,6 +38,7 @@ import FavoritoIcon from './assets/svg/suit-heart-1.svg'
 import PerfilIcon2 from './assets/svg/person.svg'
 import PerfilIcon from './assets/svg/person-1.svg'
 import DetalheProduto from './View/DetalheProduto/DetalheProduto';
+import Encomenda from './View/Encomenda/Encomenda';
 
 
 const Stack = createStackNavigator()
@@ -53,6 +54,7 @@ export default function App() {
             <Stack.Screen  name='detailProduto' component={DetalheProduto} />
             <Stack.Screen name='verify' component={Verify} />
             <Stack.Screen name='signuptelefone' component={SignUpTelefone} />
+            <Stack.Screen name='encomenda' component={Encomenda}/>
             <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>

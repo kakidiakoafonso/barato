@@ -23,12 +23,63 @@ const styles = StyleSheet.create({
     },
     bottom:
     {
-        width:'96%',height:300,
-        backgroundColor:cinzaEscuro,
-        borderTopLeftRadius:60,
-        borderTopEndRadius:60,
+        width:'96%',height:320,
+        backgroundColor:cinzaClaro,
+        borderTopLeftRadius:50,
+        borderTopEndRadius:50,
         justifyContent:'space-evenly',
         alignItems:'center'
+    },
+    TextNome:
+    {
+        fontFamily:'Montserrat-Bold',
+        fontSize:18
+    },
+    TextDescricao:
+    {
+        fontFamily:'Montserrat-Regular'
+    },
+    TextPreco:
+    {
+        fontFamily:'Montserrat-Bold',
+        color:verde,marginTop:5
+    },
+    txtProdutosRelacionados:
+    {
+        fontFamily:'Montserrat-Bold',
+    },
+    txtMaisProdutos:
+    {
+        color:verde,
+        fontFamily:'Montserrat-Bold',
+    },
+    btnView:
+    {
+        backgroundColor:cinzaEscuro,
+        height:30,width:100,borderRadius:15,
+        flexDirection:'row',justifyContent:'space-between',
+        alignItems:'center'
+    },
+    btnControllerLefth:{marginLeft:5},
+    btnControllerRight:{marginRight:5},
+    txtQuantidade:{fontFamily:'Montserrat-Bold',fontSize:20},
+    btnCompra:
+    {
+        backgroundColor:verde,
+        height:35,width:180,borderRadius:15,
+        flexDirection:'row',
+        justifyContent:'space-around',
+        alignItems:'center'
+    },
+    txtCompra:
+    {
+        fontFamily:'Montserrat-Bold',color:'#fff',
+        fontSize:13
+    },
+    txtPrecoVenda:
+    {
+        fontFamily:'Montserrat-Bold',color:'#fff',
+        fontSize:13
     }
 })
 export default styles;
