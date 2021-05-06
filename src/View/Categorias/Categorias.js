@@ -1,6 +1,6 @@
 import { Icon } from 'native-base'
-import React from 'react'
-import { View, Text, TextInput,TouchableOpacity,Image,ScrollView} from 'react-native'
+import React,{useEffect,useState} from 'react'
+import { View, Text, TextInput,ActivityIndicator} from 'react-native'
 import CategoriaCard from '../Components/CategoriaCard'
 import styles from './Style'
 
@@ -20,12 +20,32 @@ import Higiene from '../../assets/svg/artigos-de-higiene-pessoal.svg'
 
 
 //Dados
-import CategoriaData  from '../../data/API'
-
+import CategoriaData ,{prodList} from '../../data/API'
+import axios from 'axios'
 
 
 const categorias = [1,2,3,4,5,6,7,8,9,10,11,12]
-export default function Categorias() {
+export default function Categorias() 
+{
+    const [categorias, setcategorias] = useState([])
+    useEffect(() =>
+    {
+        getData()
+    },[])
+
+    async function getData() 
+    {
+        axios.get("https://baratoserver.herokuapp.com/api/v1/categories").
+        then((resposta)=>
+        {
+            //console.log(resposta.data)
+            setcategorias(resposta.data)
+        }).catch((erro)=>
+        {
+            console.log(erro)
+        })
+
+    }
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -54,8 +74,8 @@ export default function Categorias() {
             <View style={styles.categoriasWraper}>
                 
                {
-                   CategoriaData.map((e, key)=>(
-                    <CategoriaCard key={key} img={e.img} titulo={e.titulo}  data={e}/>
+                 categorias.map((dados, key)=>(
+                    <CategoriaCard key={key}  data={dados}/>
                    ))
                }
 
@@ -65,18 +85,3 @@ export default function Categorias() {
     )
 }
 
-
-/*
-
- <View style={styles.categoriasWraper}>
-                <CategoriaCard SVG={Frutas} titulo='Frutas e legumes'/>
-                <CategoriaCard SVG={Pestisco} titulo='Petisco'/>
-                <CategoriaCard SVG={Condimento} titulo='Petisco'/>
-                <CategoriaCard SVG={Alcool} titulo='Petisco'/>
-                <CategoriaCard SVG={Padaria} titulo='Petisco'/>
-                <CategoriaCard SVG={Lacticios} titulo='Petisco'/>
-                <CategoriaCard SVG={Cha} titulo='Petisco'/>
-                <CategoriaCard SVG={Bioseguranca} titulo='Petisco'/>
-                <CategoriaCard SVG={Higiene} titulo='Petisco'/>
-            </View>
-*/

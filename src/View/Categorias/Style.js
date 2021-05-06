@@ -71,9 +71,8 @@ categoriasWraper:
     width:'90%',height:100,
     alignSelf:'center',
     flexDirection:'row',
-    justifyContent:'space-between',
     flexGrow:3,
-    flexWrap:'wrap'
+    flexWrap:'wrap',
 },
 })
 

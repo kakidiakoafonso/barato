@@ -9,6 +9,8 @@ import { Divider } from 'react-native-elements/dist/divider/Divider'
 
 import LocationIcon from '../../assets/svg/placeholder-2.svg'
 import CarrinhoIcon from '../../assets/svg/Grupo 481.svg'
+import TargetIcon from '../../assets/svg/target.svg'
+import DropDownMenu from '../Components/DropDownMenu'
 export default function Encomenda({navigation}) 
 {
     return (
@@ -52,7 +54,7 @@ export default function Encomenda({navigation})
                         <TouchableOpacity style={styles.btnLocation}>
                             <Text style={{fontFamily:'Montserrat-Regular'}}>Kilamba, Luanda</Text>
                         </TouchableOpacity>
-                        <Icon name='target-two' type='Foundation' style={{color:verde}}/>
+                        <TargetIcon width={30} height={30}/>
                     </View>
                     <Divider style={{height:1,backgroundColor:'#ccc',width:'100%',alignSelf:'center'}}/>
                 </View>
@@ -61,6 +63,7 @@ export default function Encomenda({navigation})
                     <View style={{flexDirection:'row',alignItems:'center',marginTop:10}}>
                         <Icon name='clockcircleo' type='AntDesign' style={{fontSize:17,marginRight:5}}/>
                         <Text>Tempo de entrega</Text>
+                        <DropDownMenu/>
                     </View>
                 <Divider style={{height:1,backgroundColor:'#ccc',width:'100%',alignSelf:'center'}}/>
                 </View>
@@ -107,7 +110,9 @@ const  cinzaEscuro= '#cecece'
 const styles = StyleSheet.create({
     txtEncomenda:
     {
-        marginLeft:10,
+        marginLeft:15,
+        color:'#000',
+        fontFamily:'Montserrat-Regular'
     },
     counterContainerView:
     {

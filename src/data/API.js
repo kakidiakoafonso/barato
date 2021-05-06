@@ -1,3 +1,5 @@
+import axios from 'axios'
+const baseEndpoint = "https://baratoserver.herokuapp.com/api/v1"
 const categorias = [
     {id:1,categoria:'Frutas',titulo:'Frutas e legumes',img:'https://i.pinimg.com/originals/eb/1f/86/eb1f86ed31ca44edfc10105a711db8f4.jpg'},
     {id:2,categoria:'Frutas',titulo:'Frutas e legumes',img:'https://i.pinimg.com/originals/eb/1f/86/eb1f86ed31ca44edfc10105a711db8f4.jpg'},
@@ -18,4 +20,19 @@ export const produtos = [
     {id:4,nome:'Coca Cola',quantidade:10,descricao:'Coca Cola Fresca',preco:350,img:'https://araujo.vteximg.com.br/arquivos/ids/4042618-1000-1000/07894900010015.jpg?v=637436775975100000'},
     
 ]
+export const prodList = async ()=>
+{
+   let dados = "Angola"
+   axios.get("https://baratoserver.herokuapp.com/api/v1/categories").
+        then((resposta)=>
+        {
+           dados = resposta.data
+           //console.log(r)
+        }).catch((erro)=>
+        {
+            dados = erro
+            console.log(e)
+        })
+   return {dados}
+}
 export default categorias; 

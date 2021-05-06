@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { View, Text,TextInput, ScrollView,Image, TouchableOpacity, FlatList } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { Icon} from 'native-base'
@@ -17,8 +17,7 @@ import {produtos} from '../../data/API'
 
 export default function Home({navigation , route}) 
 {
-    //const {categoria} = route.params
-    const categoria = "Frutas"
+    const {categoria} = route.params
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -44,7 +43,7 @@ export default function Home({navigation , route})
                 </ScrollView>
             </View>
             <View style={{flex:1}}>
-                <Text style={{fontSize:20,fontFamily:'Montserrat-Regular'}}> {categoria}</Text>
+                <Text style={{fontSize:20,fontFamily:'Montserrat-Regular',textTransform:'capitalize'}}> {categoria}</Text>
                 <View style={{flex:1,marginTop:5,flexDirection:'row',flexWrap:'wrap'}}>
                     {
                         produtos.map((item,i)=>(
@@ -60,18 +59,3 @@ export default function Home({navigation , route})
     )
 }
 
-
-//style={{flex:1,marginTop:5,flexDirection:'row',flexWrap:'wrap'}}
-
-/*
-
-
-<View style={{flex:1,marginTop:5,flexDirection:'row',flexWrap:'wrap'}}>
-                    <HomeItemComponent/>
-                    <HomeItemComponent/>
-                    <HomeItemComponent/>
-                    <HomeItemComponent/>
-                </View>
-
-
-*/
