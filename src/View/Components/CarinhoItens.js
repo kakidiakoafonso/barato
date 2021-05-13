@@ -1,6 +1,6 @@
 import { Header,Left,Button,Icon,Body,Title,Right } from 'native-base'
 import React,{useState} from 'react'
-import { View, Image,Text,TouchableOpacity, ScrollView } from 'react-native'
+import { View, Image,Text,TouchableOpacity} from 'react-native'
 
 //SVG
 import IconVoltar from '../../assets/svg/arrow-left-short.svg'
@@ -9,12 +9,14 @@ import DeleteIcon from '../../assets/svg/delete.svg'
 
 export default function CarinhoItens() {
     return (
-        <View style={{height:150,margin:10,borderRadius:5,
+        <View activeOpacity={0.99} style={{height:150,margin:10,borderRadius:5,
             borderWidth:1,borderColor:'#cecece',elevation:1,
             justifyContent:'center',flexDirection:'row',alignItems:'center'
             }}>
-                <Image source={{uri:'https://veja.abril.com.br/wp-content/uploads/2018/11/saide-cerveja-gim-20180225-004.jpg'}}
+                <TouchableOpacity activeOpacity={0.6}>
+                    <Image source={{uri:'https://veja.abril.com.br/wp-content/uploads/2018/11/saide-cerveja-gim-20180225-004.jpg'}}
                     style={{width:100,height:100,borderRadius:10}}/>
+                </TouchableOpacity>
                 
                 <View style={{width:'60%',height:100,justifyContent:'space-between',marginLeft:10}}>
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
@@ -31,9 +33,15 @@ export default function CarinhoItens() {
                             width:100,justifyContent:'space-evenly',alignItems:'center',
                             height:22,borderRadius:15
                         }}>
-                            <Icon name='minus' type='AntDesign' style={{fontSize:16, color:'white'}}/>
+                           <TouchableOpacity>
+                                <Icon name='minus' type='AntDesign' style={{fontSize:16, color:'white'}}/>
+                           </TouchableOpacity>
+
                             <Text style={{fontSize:14,fontFamily:'Montserrat-Bold',color:'white'}}>1</Text>
-                            <Icon name='plus' type='AntDesign' style={{fontSize:16,color:'white'}}/>
+
+                            <TouchableOpacity>
+                                <Icon name='plus' type='AntDesign' style={{fontSize:16,color:'white'}}/>
+                            </TouchableOpacity>
                         </View>
                         <Text style={{fontFamily:'Montserrat-Regular'}}>100 Kz</Text>
                     </View>

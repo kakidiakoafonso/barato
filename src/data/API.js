@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 const baseEndpoint = "https://baratoserver.herokuapp.com/api/v1"
 const categorias = [
     {id:1,categoria:'Frutas',titulo:'Frutas e legumes',img:'https://i.pinimg.com/originals/eb/1f/86/eb1f86ed31ca44edfc10105a711db8f4.jpg'},
@@ -20,19 +21,22 @@ export const produtos = [
     {id:4,nome:'Coca Cola',quantidade:10,descricao:'Coca Cola Fresca',preco:350,img:'https://araujo.vteximg.com.br/arquivos/ids/4042618-1000-1000/07894900010015.jpg?v=637436775975100000'},
     
 ]
-export const prodList = async ()=>
+export const getCategorias = async ()=>
 {
-   let dados = "Angola"
    axios.get("https://baratoserver.herokuapp.com/api/v1/categories").
         then((resposta)=>
         {
-           dados = resposta.data
-           //console.log(r)
+           console.log(r)
         }).catch((erro)=>
         {
-            dados = erro
             console.log(e)
         })
    return {dados}
+}
+export const getUserInfo = async (setUserinfo)=>
+{
+    const dados = await axios.get("https://baratoserver.herokuapp.com/api/v1/user/60759e2614f19337960d11fb")
+    await setUserinfo(dados.data)
+   //console.log(dados.data)
 }
 export default categorias; 

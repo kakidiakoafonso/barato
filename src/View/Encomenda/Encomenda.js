@@ -53,6 +53,7 @@ export default function Encomenda({navigation})
                         <LocationIcon width={30} height={30}/>
                         <TouchableOpacity style={styles.btnLocation}>
                             <Text style={{fontFamily:'Montserrat-Regular'}}>Kilamba, Luanda</Text>
+                            <Icon name='caretdown' type='AntDesign' style={{fontSize:12}}/>
                         </TouchableOpacity>
                         <TargetIcon width={30} height={30}/>
                     </View>
@@ -87,7 +88,7 @@ export default function Encomenda({navigation})
                     justifyContent:'space-evenly'}}>
                     <View style={styles.precoView}>
                         <CarrinhoIcon width={25} height={25} />
-                        <Text>900 KZ</Text>
+                        <Text style={{fontWeight:'bold'}}>900 KZ</Text>
                     </View>
                     <TouchableOpacity style={styles.btnEncomenda}> 
                         <Text style={{fontFamily:'Montserrat-Regular',color:'#fff',fontWeight:'bold',fontSize:16}}>Faça encomenda</Text>
@@ -136,8 +137,9 @@ const styles = StyleSheet.create({
     btnLocation:
     {
         backgroundColor:cinzaClaro,width:'70%',height:45,
-        borderRadius:10,justifyContent:'space-between',
-        alignItems:'center',paddingVertical:10
+        borderRadius:10,justifyContent:'space-evenly',
+        alignItems:'center',paddingVertical:10,
+        flexDirection:'row'
     },
 
     //Pagamento
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     precoView:
     {
         backgroundColor:cinzaClaro,
-        height:40,width:85,alignItems:'center',
+        height:40,width:85,alignItems:'center',paddingHorizontal:5,
         justifyContent:'space-around',
         flexDirection:'row'
     },

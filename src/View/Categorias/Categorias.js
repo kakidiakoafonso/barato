@@ -20,7 +20,7 @@ import Higiene from '../../assets/svg/artigos-de-higiene-pessoal.svg'
 
 
 //Dados
-import CategoriaData ,{prodList} from '../../data/API'
+import CategoriaData ,{getCategorias} from '../../data/API'
 import axios from 'axios'
 
 
@@ -30,9 +30,10 @@ export default function Categorias()
     const [categorias, setcategorias] = useState([])
     useEffect(() =>
     {
-        getData()
+        //getData()
+        APICall()
     },[])
-
+    const APICall = async()=> getCategorias()
     async function getData() 
     {
         axios.get("https://baratoserver.herokuapp.com/api/v1/categories").

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { View, Text,Modal ,TouchableOpacity,Image} from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
 import { Icon } from 'native-base'
@@ -20,6 +20,9 @@ import CloseIcon from '../../assets/svg/Grupo 588.svg'
 import LogoutIcon from '../../assets/svg/logout-1.svg'
 import Logout from './Components/Logout'
 
+//Context
+import {UserContext} from '../../data/Contexts/ContextUsuario'
+
 
 export default function Perfil() 
 {
@@ -27,6 +30,9 @@ export default function Perfil()
     const [remover, setremover] = useState(true)
 
     const modalToggle =()=> setmostraModal(!mostraModal)
+
+    const {btn,user} = useContext(UserContext)
+    console.log(user)
     return (
         <View style={style.container}>
 
@@ -54,7 +60,7 @@ export default function Perfil()
                     <View style={{marginLeft:10}}>
                         <Text style={[style.txtProfileView,style.txtProfileViewName]}>Kakidiako Afonso</Text>
                         <Text style={style.txtProfileView}>945 176 405</Text>
-                        <Text style={style.txtProfileView}>kakidiakoafonso@gmail.com</Text>
+                        <Text style={style.txtProfileView}>AAA</Text>
                     </View>
                 </View>
 
@@ -130,7 +136,9 @@ export default function Perfil()
                         </View>
                     </TouchableOpacity>
                 </View>
-
+                        <TouchableOpacity onPress={()=> btn()}>
+                            <Text>Testar</Text>
+                        </TouchableOpacity>
             </View>
 
         </View>

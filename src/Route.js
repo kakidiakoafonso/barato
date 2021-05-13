@@ -39,14 +39,16 @@ import PerfilIcon2 from './assets/svg/person.svg'
 import PerfilIcon from './assets/svg/person-1.svg'
 import DetalheProduto from './View/DetalheProduto/DetalheProduto';
 import Encomenda from './View/Encomenda/Encomenda';
+import ContextUsuario from './data/Contexts/ContextUsuario';
 
 
 const Stack = createStackNavigator()
 
 export default function App() {
   return (
+    <ContextUsuario>
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='splash'>
+      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
             <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
             <Stack.Screen name='splash' component={Splash} />
             <Stack.Screen name='sign' component={Sign}  />
@@ -58,6 +60,7 @@ export default function App() {
             <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
+    </ContextUsuario>
   );
 }
 

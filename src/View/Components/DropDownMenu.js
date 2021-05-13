@@ -14,8 +14,9 @@ const DropDownMenu = () =>
     const horarios = ['6:00 as 7:00','7:00 as 8:00','8:00 as 9:00','9:00 as 10:00','10:00 as 11:00','11:00 as 12:00']
     return (
         <Menu
+
             ref={menu}
-            style={{height:200,width:110,marginRight:10}}
+            style={{height:215,width:110,marginRight:10}}
             button=
             {
                 <TouchableOpacity style={styles.btn} onPress={()=>mostramenu()}>
@@ -24,6 +25,10 @@ const DropDownMenu = () =>
                 </TouchableOpacity>
             }
         >
+            <MenuItem style={{width:'100%',height:25}}>
+                <Text style={{fontWeight:'bold'}}>Escolha data</Text>
+            </MenuItem>
+            <MenuDivider />
             {
                 diasDeSemana.map((item,key)=>(
                     <MenuItem style={{height:27}} key={key} onPress={()=>mostrasubmenu()}>
@@ -31,7 +36,9 @@ const DropDownMenu = () =>
                         <Menu style={{height:180,width:100,marginLeft:46}} ref={subMenu}
                             //horarios.map((item,key)=><Text key={key}>{item}</Text>)
                         >
+                            
                             {
+                                
                                 horarios.map((item,key)=>
                                 <MenuItem style={{width:'100%',height:25,
                                 marginLeft:-13
@@ -68,8 +75,8 @@ const styles = StyleSheet.create({
     },
     txtBtn:
     {
-        color:verde, fontFamily:'Montserrat-Bold',
-        fontSize:18
+        color:'#000', fontFamily:'Montserrat-Regular',
+        fontSize:16
     },
     iconBtn:
     {
