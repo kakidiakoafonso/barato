@@ -1,5 +1,5 @@
 import { Header,Left,Button,Icon,Body,Title,Right } from 'native-base'
-import React,{useState} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { View, Image,Text,TouchableOpacity, ScrollView } from 'react-native'
 import style from './Style'
 
@@ -9,10 +9,24 @@ import CarrinhoVazio from '../../assets/svg/Grupo 484.svg'
 import DeleteIcon from '../../assets/svg/delete.svg'
 import CarinhoItens from '../Components/CarinhoItens'
 import { useNavigation } from '@react-navigation/core'
+import {Carrinho as CarrinhoContexto} from '../../data/Contexts/ContextCarrinho'
 
 export default function Carrinho({navigation}) 
 {
-    const [carrinhoVazio, setcarrinhoVazio] = useState(false)
+    const {carrinhoDados} = useContext(CarrinhoContexto)
+    const [carrinhoVazio, setcarrinhoVazio] = useState(true)
+    useEffect(() => 
+    {
+        console.log("Qtdade disponivel " + carrinhoDados.length)
+        if(carrinhoDados.length!==0) setcarrinhoVazio(false)
+        else setcarrinhoVazio(true)
+    })
+    useEffect(() => 
+    {
+        console.log("Qtdade disponivel " + carrinhoDados.length)
+        if(carrinhoDados.length!==0) setcarrinhoVazio(false)
+        else setcarrinhoVazio(true)
+    },[carrinhoDados])
     return (
         <View style={style.container}>
             <Header style={{backgroundColor:'#2cbf88'}}>
@@ -27,7 +41,7 @@ export default function Carrinho({navigation})
                 </Body>
             </Header>
             {
-                carrinhoVazio? <CarrinhoVazioComponent/> : <CarrinhoComponent/>
+                carrinhoVazio ? <CarrinhoVazioComponent/> : <CarrinhoComponent  carrinho={carrinhoDados}/>
             }
 
             
@@ -41,16 +55,18 @@ export default function Carrinho({navigation})
 
 
 
-const CarrinhoComponent =()=>
+const CarrinhoComponent =({carrinho})=>
 {
     const nav = useNavigation()
     return(
         <View  style={{flex:1}}>
             <ScrollView showsVerticalScrollIndicator={false} style={style.container}>
-                <CarinhoItens/>
-                <CarinhoItens/>
-                <CarinhoItens/>
-                <CarinhoItens/>
+                {
+                    carrinho.map((i,key)=>
+                    (
+                        <CarinhoItens key={key} data={i}/>
+                    ))
+                }
             </ScrollView>
             
                 <TouchableOpacity activeOpacity={0.8} style={style.btnVericar} onPress={()=>nav.navigate('encomenda')}>

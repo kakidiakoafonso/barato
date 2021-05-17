@@ -40,6 +40,8 @@ import PerfilIcon from './assets/svg/person-1.svg'
 import DetalheProduto from './View/DetalheProduto/DetalheProduto';
 import Encomenda from './View/Encomenda/Encomenda';
 import ContextUsuario from './data/Contexts/ContextUsuario';
+import ContextProdutos from './data/Contexts/ContextProdutos';
+import ContextCarrinho from './data/Contexts/ContextCarrinho';
 
 
 const Stack = createStackNavigator()
@@ -47,19 +49,23 @@ const Stack = createStackNavigator()
 export default function App() {
   return (
     <ContextUsuario>
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
-            <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
-            <Stack.Screen name='splash' component={Splash} />
-            <Stack.Screen name='sign' component={Sign}  />
-            <Stack.Screen  name='detail' component={Detail} />
-            <Stack.Screen  name='detailProduto' component={DetalheProduto} />
-            <Stack.Screen name='verify' component={Verify} />
-            <Stack.Screen name='signuptelefone' component={SignUpTelefone} />
-            <Stack.Screen name='encomenda' component={Encomenda}/>
-            <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+      <ContextProdutos>
+        <ContextCarrinho>
+                  <NavigationContainer>
+                    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
+                          <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
+                          <Stack.Screen name='splash' component={Splash} />
+                          <Stack.Screen name='sign' component={Sign}  />
+                          <Stack.Screen  name='detail' component={Detail} />
+                          <Stack.Screen  name='detailProduto' component={DetalheProduto} />
+                          <Stack.Screen name='verify' component={Verify} />
+                          <Stack.Screen name='signuptelefone' component={SignUpTelefone} />
+                          <Stack.Screen name='encomenda' component={Encomenda}/>
+                          <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
+                    </Stack.Navigator>
+                  </NavigationContainer>
+        </ContextCarrinho>
+    </ContextProdutos>
     </ContextUsuario>
   );
 }

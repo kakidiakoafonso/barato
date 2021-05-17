@@ -1,5 +1,5 @@
 import { Header,Left,Button,Icon,Body,Title,Right } from 'native-base'
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { View, Image,Text,TouchableOpacity} from 'react-native'
 
 //SVG
@@ -7,7 +7,12 @@ import IconVoltar from '../../assets/svg/arrow-left-short.svg'
 import CarrinhoVazio from '../../assets/svg/Grupo 484.svg'
 import DeleteIcon from '../../assets/svg/delete.svg'
 
-export default function CarinhoItens() {
+//Contexs
+import {Carrinho} from '../../data/Contexts/ContextCarrinho'
+
+export default function CarinhoItens({data}) 
+{
+    const {removeNocarrinho} = useContext(Carrinho)
     return (
         <View activeOpacity={0.99} style={{height:150,margin:10,borderRadius:5,
             borderWidth:1,borderColor:'#cecece',elevation:1,
@@ -24,7 +29,7 @@ export default function CarinhoItens() {
                             <Text style={{color:'#323232',fontFamily:'Montserrat-Regular'}}>Manga</Text>
                             <Text style={{color:'#323232',fontFamily:'Montserrat-Regular'}}>100 KG</Text>
                         </View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>removeNocarrinho(data)}>
                             <DeleteIcon width={20} height={20}/>
                         </TouchableOpacity>
                     </View>

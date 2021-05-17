@@ -1,8 +1,10 @@
-import React,{useState,useEffect} from 'react'
-import { View, Text,TextInput, ScrollView,Image, TouchableOpacity,TouchableHighlight } from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import React,{useState,useEffect,useContext} from 'react'
+import { View, Text,TextInput, ScrollView,Image, TouchableOpacity} from 'react-native'
 import { Icon} from 'native-base'
 
+//Context
+import {Produtos} from '../../data/Contexts/ContextProdutos'
+import {Carrinho} from '../../data/Contexts/ContextCarrinho'
 
 
 const verde = '#2cbf88'
@@ -14,10 +16,17 @@ const  cinzaEscuro= '#cecece'
 export default function HomeItemComponent({item}) 
 {
     const [adicionado, setadicionado] = useState(false)
+    //const {ola} = useContext(Produtos)
+    const 
+    {
+        adicionarNoCarrinho,carrinhoDados,estaNocarinho, removeNocarrinho
+    } = useContext(Carrinho)
+
+
     useEffect(() => 
     {
-
-    },[])
+        setadicionado(estaNocarinho(item))
+    },[carrinhoDados])
 
     return (
         <View 
@@ -33,32 +42,33 @@ export default function HomeItemComponent({item})
                     </Text>
                 </View>
             </View>
-            {adicionado ? <Adicionado/> :<Adicionar/>}
+            {adicionado ? <Adicionado remover={removeNocarrinho} item={item}/> :<Adicionar add={adicionarNoCarrinho}  item={item} />}
         </View>
     )
 }
 
 
-const Adicionar = () =>
+const Adicionar = ({add,item}) =>
 {
     return(
-        <TouchableOpacity activeOpacity={0.4} style={{borderColor:verde,borderWidth:1,height:'18%',borderRadius:10,
-            justifyContent:'center',alignItems:'center'}}>
+        <TouchableOpacity activeOpacity={0.4} style={{borderColor:verde,borderWidth:1,height:'18%',
+        borderRadius:10, justifyContent:'center',alignItems:'center'}}
+        onPress={()=>add(item)}>
                 <Text style={{color:verde,fontFamily:'Montserrat-Regular'}}>Adicionar</Text>
             </TouchableOpacity>
     )
 }
 
 
-const Adicionado = () =>
+const Adicionado = ({item, remover}) =>
 {
     return(
-        <View style={{backgroundColor:verde,height:'18%',borderRadius:10,flexDirection:'row',
+        <View style={{backgroundColor:verde,height:'15%',borderRadius:10,flexDirection:'row',
             justifyContent:'space-between',alignItems:'center'}}>
-                <TouchableOpacity>
-                    <Icon name='plus' type='AntDesign' style={{fontSize:20,marginLeft:5, color:'white'}}/>
+                <TouchableOpacity onPress={()=> remover()}>
+                    <Icon name='minus' type='AntDesign' style={{fontSize:20,marginLeft:5, color:'white'}}/>
                 </TouchableOpacity>
-                <Text style={{color:'white',fontSize:18,fontFamily:'Montserrat-Bold'}}>1</Text>
+                <Text style={{color:'white',fontSize:15,fontFamily:'Montserrat-Bold'}}>1</Text>
                 <TouchableOpacity>
                     <Icon name='plus' type='AntDesign' style={{fontSize:20,marginRight:5, color:'white'}}/>
                 </TouchableOpacity>
