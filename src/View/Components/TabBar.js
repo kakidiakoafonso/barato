@@ -1,16 +1,20 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { StyleSheet, View ,Text,TouchableOpacity} from 'react-native'
-
+import { Badge, Icon } from 'native-base'
 
 //SVGS
 import Home from '../../assets/svg/house.svg'
 import Carrinho from '../../assets/svg/Grupo 368.svg'
 import Favoritos from '../../assets/svg/suit-heart.svg'
 import Perfil from '../../assets/svg/person.svg'
-import { Icon } from 'native-base'
+
+//Contexts
+import {Carrinho as CarrinhoInfos} from '../../data/Contexts/ContextCarrinho'
+
 
 export default function TabBar({state, navigation}) 
 {
+    const {carrinhoDados} = useContext(CarrinhoInfos)
     const {routes} = state
     const [selecionado, setselecionado] = useState('home')
     const renderizaAtual = ( tabAtual) => tabAtual=== selecionado
@@ -36,6 +40,7 @@ export default function TabBar({state, navigation})
                     titulo={route.params.titulo} 
                     activo={renderizaAtual(route.name)}
                     onPress={()=> clickTab(route.name)}
+                    qtdade={carrinhoDados.length}
                     
                     />
                 ))
@@ -46,12 +51,21 @@ export default function TabBar({state, navigation})
 }
 
 
-const Tab =({Icone,Icone2, activo, onPress,titulo})=>
+const Tab =({Icone,Icone2, activo, onPress,titulo,qtdade})=>
 {
     return(
         <TouchableOpacity  style={{alignItems:'center'}}
         onPress={()=> onPress()}>
-             { activo? <Icone2/>:<Icone/>}
+             { activo? 
+             <View>
+                 <Icone2/>
+                 <Badge style={{position:'absolute',width:20,height:20,
+                    backgroundColor:'#a7ce39',bottom:20,left:8}}>
+                     <Text>{qtdade}</Text>
+                </Badge>
+             </View>
+             :
+             <Icone/>}
              <Text style={{fontFamily:'Montserrat-Regular'}}>{titulo}</Text>
         </TouchableOpacity>
     )

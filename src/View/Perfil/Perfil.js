@@ -24,7 +24,7 @@ import Logout from './Components/Logout'
 import {UserContext} from '../../data/Contexts/ContextUsuario'
 
 
-export default function Perfil() 
+export default function Perfil({navigation}) 
 {
     const [mostraModal, setmostraModal] = useState(false)
     const [remover, setremover] = useState(true)
@@ -60,7 +60,7 @@ export default function Perfil()
                     <View style={{marginLeft:10}}>
                         <Text style={[style.txtProfileView,style.txtProfileViewName]}>Kakidiako Afonso</Text>
                         <Text style={style.txtProfileView}>945 176 405</Text>
-                        <Text style={style.txtProfileView}>AAA</Text>
+                        <Text style={style.txtProfileView}>kakidiakoafonso@gmail.com</Text>
                     </View>
                 </View>
 
@@ -74,7 +74,8 @@ export default function Perfil()
                        <CallIcon width={30} height={30}/>
                        <Text textBreakStrategy='balanced' numberOfLines={2} style={style.txtHeader}>Contacte-nos</Text>
                    </TouchableOpacity>
-                   <TouchableOpacity style={style.headerViewContactsItens}>
+                   <TouchableOpacity style={style.headerViewContactsItens}
+                   onPress={()=>navigation.navigate("enderecos")}>
                        <LocationIcon width={30} height={30}/>
                        <Text numberOfLines={2} style={style.txtHeader}>Endereço</Text>
                    </TouchableOpacity>
@@ -83,7 +84,8 @@ export default function Perfil()
         
             <View style={{flex:1}}>
                 <View style={[style.wraper,{marginTop:45}]}>
-                    <TouchableOpacity  style={style.wraperItens}>
+                    <TouchableOpacity  style={style.wraperItens}
+                        onPress={()=>navigation.navigate('informacoespessoais')}>
                         <View style={style.wraperItens}>
                             <PersonIcon width={20} height={20} />
                             <Text style={style.txtWraperItens}>Informações pessoais</Text>
@@ -136,9 +138,6 @@ export default function Perfil()
                         </View>
                     </TouchableOpacity>
                 </View>
-                        <TouchableOpacity onPress={()=> btn()}>
-                            <Text>Testar</Text>
-                        </TouchableOpacity>
             </View>
 
         </View>

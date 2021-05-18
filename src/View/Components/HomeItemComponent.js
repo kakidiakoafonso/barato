@@ -5,6 +5,7 @@ import { Icon} from 'native-base'
 //Context
 import {Produtos} from '../../data/Contexts/ContextProdutos'
 import {Carrinho} from '../../data/Contexts/ContextCarrinho'
+import { useNavigation } from '@react-navigation/core'
 
 
 const verde = '#2cbf88'
@@ -16,6 +17,7 @@ const  cinzaEscuro= '#cecece'
 export default function HomeItemComponent({item}) 
 {
     const [adicionado, setadicionado] = useState(false)
+    const navigation = useNavigation()
     //const {ola} = useContext(Produtos)
     const 
     {
@@ -33,8 +35,12 @@ export default function HomeItemComponent({item})
             activeOpacity={0.8}  style={{width:110,height:150,borderWidth:1,marginHorizontal:5,padding:5,
             borderColor:'#efefef',elevation:1.4,marginTop:10,borderRadius:5}}>
             <View style={{height:'82%',alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
-                <Image source={{uri:item.img}} 
-                    style={{width:'50%',height:'80%',borderRadius:8}}/>
+                <TouchableOpacity onPress={()=> navigation.navigate('detailProduto')}
+                    style={{width:'50%',height:'80%',borderRadius:8}}>
+                    <Image source={{uri:item.img}} 
+                        style={{width:'100%',height:'100%'}}/>
+                </TouchableOpacity>
+                
                 <View style={{width:'30%',height:'80%',marginLeft:5}}>
                     <Text style={{fontSize:12,color:'#000',fontFamily:'Montserrat-Bold'}}>{item.preco} Kz</Text>
                     <Text style={{fontSize:11,color:'#000',marginTop:3,fontFamily:'Montserrat-Regular'}}>

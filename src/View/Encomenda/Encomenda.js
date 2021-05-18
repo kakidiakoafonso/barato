@@ -1,8 +1,8 @@
-import React from 'react'
-import { StyleSheet,TouchableOpacity, Text, View ,} from 'react-native'
+import React,{useState} from 'react'
+import { StyleSheet,TouchableOpacity, Text, View ,Modal} from 'react-native'
 import { Header, Icon, CheckBox } from 'native-base'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
-//import style from './Style'
+import styles from './Style'
 
 
 //SVGs
@@ -10,11 +10,20 @@ import { Divider } from 'react-native-elements/dist/divider/Divider'
 import LocationIcon from '../../assets/svg/placeholder-2.svg'
 import CarrinhoIcon from '../../assets/svg/Grupo 481.svg'
 import TargetIcon from '../../assets/svg/target.svg'
+import SucessIcon from  "../../assets/svg/Grupo 556.svg";
+
+
+//Components
 import DropDownMenu from '../Components/DropDownMenu'
+
+
 export default function Encomenda({navigation}) 
 {
+    const [modalSucessoShow, setmodalSucessoShow] = useState(false)
+    const TerminarEncomenda =()=> setmodalSucessoShow(!modalSucessoShow)
     return (
         <View style={{flex:1,backgroundColor:'#fff'}}>
+            
             <Header style={{backgroundColor:'#fff',justifyContent:'flex-start',alignItems:'center'}}  
                 transparent={true}>
                     <TouchableOpacity style={{width:50,height:40,justifyContent:'center'}}
@@ -90,88 +99,34 @@ export default function Encomenda({navigation})
                         <CarrinhoIcon width={25} height={25} />
                         <Text style={{fontWeight:'bold'}}>900 KZ</Text>
                     </View>
-                    <TouchableOpacity style={styles.btnEncomenda}> 
-                        <Text style={{fontFamily:'Montserrat-Regular',color:'#fff',fontWeight:'bold',fontSize:16}}>Faça encomenda</Text>
+                    <TouchableOpacity onPress={()=>TerminarEncomenda()}
+                        style={styles.btnEncomenda}> 
+                        <Text style={{fontFamily:'Montserrat-Regular',color:'#fff',
+                            fontWeight:'bold',fontSize:16}}>
+                            Faça encomenda</Text>
                         <Icon name='rightcircle' type='AntDesign' style={styles.iconeIr}/>
                     </TouchableOpacity>
                 </View>
             </View>
+            <Modal transparent visible={modalSucessoShow}>
+                    <View style={styles.modalContainer}>
+                        <View style={styles.modalWrapper}>
+
+                            <View style={styles.infos}>
+                                <View style={styles.ModalSucessIconView}>
+                                    <SucessIcon width={50} height={50}/>
+                                </View>
+                                <Text style={styles.txtInfoAviso}>Sua encomenda foi feita com sucesso</Text>
+                                <Text style={styles.txtDetalhe}>
+                                    Os produtos serão entregues dentro de 1h
+                                </Text>
+                                <TouchableOpacity onPress={()=> setmodalSucessoShow(!modalSucessoShow)}>
+                                    <Text style={styles.txtContinuar}>CONTINUAR</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </View>
+            </Modal>
         </View>
     )
 }
-
-
-
-
-const verde = '#2cbf88'
-const  cinzaClaro = '#efefef'
-const  preto = '#323232'
-const  amarelo= '#c3e952'
-const  cinzaEscuro= '#cecece'
-const styles = StyleSheet.create({
-    txtEncomenda:
-    {
-        marginLeft:15,
-        color:'#000',
-        fontFamily:'Montserrat-Regular'
-    },
-    counterContainerView:
-    {
-        borderColor:'#000',height:150,
-        width:'90%',alignSelf:'center',marginTop:10,
-        borderRadius:15,elevation:1.3
-    },
-    countItemView:
-    {
-        flex:1,justifyContent:'space-between'
-    },
-    txtCountLef:{marginLeft:10,marginTop:10},
-    txtCountRight:{marginRight:10,marginTop:10},
-    txtTotal:{color:verde, fontFamily:'Montserrat-Bold'},
-    ///Localizacao
-    LocalizacaoContainerView:
-    {
-        height:85,
-        width:'90%',alignSelf:'center',marginTop:10,justifyContent:'space-between'
-    },
-    btnLocation:
-    {
-        backgroundColor:cinzaClaro,width:'70%',height:45,
-        borderRadius:10,justifyContent:'space-evenly',
-        alignItems:'center',paddingVertical:10,
-        flexDirection:'row'
-    },
-
-    //Pagamento
-    pagamentoView:
-    {
-        borderColor:'#000',height:60,
-        width:'90%',alignSelf:'center',justifyContent:"center",alignItems:'center'
-    },
-    checkboxSelecionado:
-    {
-        borderRadius:10,
-        backgroundColor:verde,
-        borderColor:verde
-    },
-    checkboxNaoSelecionado:
-    {
-        borderRadius:10,
-        borderColor:verde
-    },
-    //Encomenda
-    btnEncomenda:
-    {
-        width:200, backgroundColor:verde,height:45,
-        justifyContent:'center',alignItems:'center',
-        borderRadius:20,flexDirection:'row'
-    },
-    precoView:
-    {
-        backgroundColor:cinzaClaro,
-        height:40,width:85,alignItems:'center',paddingHorizontal:5,
-        justifyContent:'space-around',
-        flexDirection:'row'
-    },
-    iconeIr:{color:'#fff',marginLeft:5}
-})

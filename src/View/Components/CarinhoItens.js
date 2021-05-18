@@ -9,16 +9,18 @@ import DeleteIcon from '../../assets/svg/delete.svg'
 
 //Contexs
 import {Carrinho} from '../../data/Contexts/ContextCarrinho'
+import { useNavigation } from '@react-navigation/core'
 
 export default function CarinhoItens({data}) 
 {
+    const navigation = useNavigation()
     const {removeNocarrinho} = useContext(Carrinho)
     return (
         <View activeOpacity={0.99} style={{height:150,margin:10,borderRadius:5,
             borderWidth:1,borderColor:'#cecece',elevation:1,
             justifyContent:'center',flexDirection:'row',alignItems:'center'
             }}>
-                <TouchableOpacity activeOpacity={0.6}>
+                <TouchableOpacity activeOpacity={0.6} onPress={()=> navigation.navigate('detailProduto')}>
                     <Image source={{uri:'https://veja.abril.com.br/wp-content/uploads/2018/11/saide-cerveja-gim-20180225-004.jpg'}}
                     style={{width:100,height:100,borderRadius:10}}/>
                 </TouchableOpacity>

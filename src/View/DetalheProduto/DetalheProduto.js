@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { View, Text ,Image,TouchableOpacity, ScrollView} from 'react-native'
-import { Header,Left,Button,Icon,Body,Title,Right } from 'native-base'
+import { Header,Left,Button,Icon,Body,Title,Right,Badge } from 'native-base'
 import style from './Style'
 
 //SVG
@@ -10,7 +10,12 @@ import IconCarrinho from '../../assets/svg/Grupo 484.svg'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
 import DetalheItemComponent from '../Components/DetalheItemComponent'
 
-export default function DetalheProduto({navigation}) {
+//Contexts
+import {Carrinho as CarrinhoInfos} from '../../data/Contexts/ContextCarrinho'
+
+export default function DetalheProduto({navigation}) 
+{
+    const {carrinhoDados} = useContext(CarrinhoInfos)
     return (
         <View style={style.container}>
             <Header style={{backgroundColor:'#2cbf88'}}>
@@ -21,7 +26,13 @@ export default function DetalheProduto({navigation}) {
                     </TouchableOpacity>
                 </Left>
                 <Right>
-                    <IconCarrinho widht={50} height={50}/>
+                    <View>
+                        <IconCarrinho widht={50} height={50}/>
+                        <Badge style={{position:'absolute',width:20,height:20,
+                            backgroundColor:'#a7ce39',bottom:20,left:8}}>
+                            <Text>{carrinhoDados.length}</Text>
+                        </Badge>
+                    </View>
                 </Right>
             </Header>
         
@@ -54,7 +65,8 @@ export default function DetalheProduto({navigation}) {
                         <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',
                             marginTop:5}}>
                             <Text style={style.txtProdutosRelacionados}>Produtos relacionados</Text>
-                            <TouchableOpacity style={{flexDirection:'row',alignItems:'center'}}>
+                            <TouchableOpacity onPress={()=>navigation.navigate('produtosrelacionados')}
+                                style={{flexDirection:'row',alignItems:'center'}}>
                                 <Text style={style.txtMaisProdutos}>Ver mais</Text>
                                 <Icon name='right' type='AntDesign' style={{color:'#2cbf88',fontSize:18}}/>
                             </TouchableOpacity>
