@@ -90,7 +90,8 @@ export default function Sign()
                             
                                 <Text style={styles.txtCadastraseCom}>Cadastre-se com</Text>
                                 <View style={styles.iconContainer}>
-                                    <TouchableOpacity style={styles.btnSignOpcion}>
+                                    <TouchableOpacity onPress={()=> navigation.navigate('loginEmail')}
+                                        style={styles.btnSignOpcion}>
                                         <Facebook width={40} height={40}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity style={styles.btnSignOpcion}>

@@ -1,16 +1,20 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import MapView from 'react-native-maps';
-export default function App() {
+import auth from '@react-native-firebase/auth';
+import { TouchableOpacity } from 'react-native';
+import Autenticacao from './src/data/BackEnd/Autenticacao';
+export default function App() 
+{
+  
+  const Clicar = async () =>
+  { 
+    Autenticacao.AutententicarComEmailESenha("A","A")
+  }
   return (
-    <MapView
-    style={{flex:1}}
-    initialRegion={{
-      latitude: 37.78825,
-      longitude: -122.4324,
-      latitudeDelta: 0.0922,
-      longitudeDelta: 0.0421,
-    }}
-  />
+    <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      <TouchableOpacity onPress={()=>Clicar()}>
+          <Text>Click</Text>
+      </TouchableOpacity>
+    </View>
   )
 }

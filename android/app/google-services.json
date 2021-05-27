@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "51262722773",
+    "project_id": "fir-app-teste-d1c52",
+    "storage_bucket": "fir-app-teste-d1c52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51262722773:android:c602082b438573fcdf485c",
+        "android_client_info": {
+          "package_name": "com.barato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51262722773-vd69ig4v2pfantbdbaf7vj2juarh33re.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.barato",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "51262722773-rb1afqtf70q5g7uhq73ictpj5d8kul3d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjO3YQi_avUofxh8WYcxnPYjW-dSQNEPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51262722773-rb1afqtf70q5g7uhq73ictpj5d8kul3d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

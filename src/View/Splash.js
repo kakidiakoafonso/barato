@@ -13,7 +13,7 @@ const Splash = () =>
     useEffect(() =>
     {
         setTimeout(() => {
-            navigation.navigate('categorias')
+            navigation.navigate('sign')
         }, 3000);
     }, [])
     return (
