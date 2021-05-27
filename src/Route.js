@@ -46,6 +46,7 @@ import ContextProdutos from './data/Contexts/ContextProdutos';
 import ContextCarrinho from './data/Contexts/ContextCarrinho';
 import ProdutosRelacionados from './View/Relacionados/ProdutosRelacionados';
 import Enderecos from './View/Enderecos/Enderecos';
+import MapaView from './View/Mapa/MapaView';
 
 const Stack = createStackNavigator()
 
@@ -55,10 +56,11 @@ export default function App() {
       <ContextProdutos>
         <ContextCarrinho>
                   <NavigationContainer>
-                    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
+                    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='mapa'>
                           <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
                           <Stack.Screen name='splash' component={Splash} />
                           <Stack.Screen name='sign' component={Sign}  />
+                          <Stack.Screen name='mapa' component={MapaView}  />
                           <Stack.Screen  name='detail' component={Detail} />
                           <Stack.Screen  name='detailProduto' component={DetalheProduto} />
                           <Stack.Screen name='verify' component={Verify} />
