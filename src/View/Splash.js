@@ -13,8 +13,8 @@ const Splash = () =>
     useEffect(() =>
     {
         setTimeout(() => {
-            navigation.navigate('sign')
-        }, 3000);
+            navigation.navigate('loginEmail')
+        }, 4000);
     }, [])
     return (
         <View style={styles.container}>

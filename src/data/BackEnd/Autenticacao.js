@@ -20,7 +20,7 @@ const storeToken = async (token) => {
 export default Autenticacao = 
 {
   
-    AutententicarComEmailESenha: async function (email,senha,setlogado)
+    AutententicarComEmailESenha: async function (email,senha,navigation)
     {
       
       try {
@@ -32,8 +32,7 @@ export default Autenticacao =
                 ToastAndroid.SHORT,
                 ToastAndroid.CENTER
               );
-              setlogado(true)
-              useNavigation().navigate("tab")
+              navigation.navigate("categorias")
           },
           rejeitado=>{
             
