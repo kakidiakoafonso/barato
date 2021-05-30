@@ -1,38 +1,44 @@
 import {StyleSheet} from 'react-native'
-import { Dimensions} from 'react-native'
-
-const { width ,height} = Dimensions.get('screen')
-
-
-const verde = '#2cbf88'
-const  cinzaClaro = '#efefef'
-const  preto = '#323232'
-const  amarelo= '#c3e952'
-const  cinzaEscuro= '#cecece'
-
-const style = StyleSheet.create({
+const corPrimaria = '#2CBF88'
+const corSecudaria = '#313131'
+const corTerciaria = '#efefef'
+const styles = StyleSheet.create({
     container:
     {
-        flex:1,alignItems:'center',
-        justifyContent:'center'
+        backgroundColor:corPrimaria,
+        flex:1,
+        alignItems:'center',
+        justifyContent:'space-between'
     },
-    header:
+    imageContainer:
     {
-        backgroundColor:verde,
-        height:45
+        justifyContent:'flex-end',width:'100%',
+        height:'55%',
+        alignItems:'center',
     },
-    wrapper:
+    contentView:
     {
-        alignSelf:'center',
-        width:'80%', height:200,
-        justifyContent:'space-evenly'
+        width:'100%',height:300,backgroundColor:'white',
+        borderTopLeftRadius:50,borderTopRightRadius:50,
+        justifyContent:'center',alignItems:'center',
     },
-    inputs:
+    detailInput:
     {
-        borderWidth:1,
-        borderRadius:10
-        
-    }
-})
+        width:300,height:40,
+        backgroundColor:'#EFEFEF',
+        borderRadius:10,
+        paddingLeft:15
 
-export default style;
+    },
+    inputContainer:{height:100,justifyContent:'space-between'
+    ,alignItems:'center'
+        },
+    txtConfirmar:
+    {
+        color:corPrimaria,
+        fontWeight:'bold'
+    }
+    
+
+})
+export default styles

@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useState,useContext,useEffect} from 'react'
 import { View, Text,Modal ,TouchableOpacity,Image} from 'react-native'
 import { Divider } from 'react-native-elements/dist/divider/Divider'
 import { Icon } from 'native-base'
@@ -31,8 +31,8 @@ export default function Perfil({navigation})
 
     const modalToggle =()=> setmostraModal(!mostraModal)
 
-    const {btn,user} = useContext(UserContext)
-    console.log(user)
+    const {user,getUserInfo} = useContext(UserContext)
+    useEffect(()=> getUserInfo(),[])
     return (
         <View style={style.container}>
 

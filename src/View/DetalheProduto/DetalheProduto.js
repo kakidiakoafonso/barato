@@ -13,8 +13,9 @@ import DetalheItemComponent from '../Components/DetalheItemComponent'
 //Contexts
 import {Carrinho as CarrinhoInfos} from '../../data/Contexts/ContextCarrinho'
 
-export default function DetalheProduto({navigation}) 
+export default function DetalheProduto({navigation, route}) 
 {
+    const {item} = route.params
     const {carrinhoDados} = useContext(CarrinhoInfos)
     return (
         <View style={style.container}>
@@ -37,8 +38,8 @@ export default function DetalheProduto({navigation})
             </Header>
         
         <View style={style.wrapper}>
-            <View style={{width:'100%',height:200,alignItems:'center'}}>
-                <Image source={{uri:'https://onisafra.com/manaus/wp-content/uploads/2020/03/abacate-01.jpg'}}
+            <View style={{width:'100%',height:200,alignItems:'center',marginTop:10}}>
+                <Image source={{uri:item.image}}
                 style={{width:200,height:200}}/>
             </View>
 
@@ -47,9 +48,9 @@ export default function DetalheProduto({navigation})
                    <View style={{width:'85%',height:'85%',justifyContent:'space-between',
                     flexDirection:'row'}}>
                         <View>
-                            <Text style={style.TextNome}>Abacate</Text>
-                            <Text style={style.TextDescricao}>100 KG</Text>
-                            <Text style={style.TextPreco}>100 KZ</Text>
+                            <Text style={style.TextNome}>{item.name}</Text>
+                            <Text style={style.TextDescricao}>1000 KG</Text>
+                            <Text style={style.TextPreco}>{item.price} KZ</Text>
                         </View>
                         <Icon name='heart' style={{color:'red'}}/>
                    </View>

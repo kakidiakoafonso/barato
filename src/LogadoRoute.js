@@ -50,18 +50,15 @@ import MapaView from './View/Mapa/MapaView';
 
 const Stack = createStackNavigator()
 
-export default function LogadoRoute() 
+export default function SignInRoute() 
 {
   return (
     <ContextUsuario>
       <ContextProdutos>
         <ContextCarrinho>
                   <NavigationContainer>
-                    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='mapa'>
+                    <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
                           <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
-                          <Stack.Screen name='splash' component={Splash} />
-                          <Stack.Screen name='sign' component={Sign}  />
-                          <Stack.Screen name='mapa' component={MapaView}  />
                           <Stack.Screen  name='detail' component={Detail} />
                           <Stack.Screen  name='detailProduto' component={DetalheProduto} />
                           <Stack.Screen name='verify' component={Verify} />
@@ -83,7 +80,7 @@ export default function LogadoRoute()
 const Tab = createBottomTabNavigator();
 const TabRoute = () =>{
     return (
-    <Tab.Navigator tabBar={(props)=><TabBar {...props}/>} >
+    <Tab.Navigator tabBar={(props)=><TabBar {...props}/>} initialRouteName='perfil' >
         <Tab.Screen name="home" component={Home} 
             initialParams={{titulo:'Home',icon: ()=> <HomeIcon width={30} height={30}/>, icon2: ()=> <HomeIcon2 width={30} height={30} />}} />
         <Tab.Screen name="carrinho" component={Carrinho} 

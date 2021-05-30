@@ -18,7 +18,6 @@ export default function HomeItemComponent({item})
 {
     const [adicionado, setadicionado] = useState(false)
     const navigation = useNavigation()
-    //const {ola} = useContext(Produtos)
     const 
     {
         adicionarNoCarrinho,carrinhoDados,estaNocarinho, removeNocarrinho
@@ -35,16 +34,16 @@ export default function HomeItemComponent({item})
             activeOpacity={0.8}  style={{width:110,height:150,borderWidth:1,marginHorizontal:5,padding:5,
             borderColor:'#efefef',elevation:1.4,marginTop:10,borderRadius:5}}>
             <View style={{height:'82%',alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
-                <TouchableOpacity onPress={()=> navigation.navigate('detailProduto')}
+                <TouchableOpacity onPress={()=> navigation.navigate('detailProduto',{item: item})}
                     style={{width:'50%',height:'80%',borderRadius:8}}>
-                    <Image source={{uri:item.img}} 
+                    <Image source={{uri:item.image}} 
                         style={{width:'100%',height:'100%'}}/>
                 </TouchableOpacity>
                 
                 <View style={{width:'30%',height:'80%',marginLeft:5}}>
-                    <Text style={{fontSize:12,color:'#000',fontFamily:'Montserrat-Bold'}}>{item.preco} Kz</Text>
+                    <Text style={{fontSize:12,color:'#000',fontFamily:'Montserrat-Bold'}}>{item.price} Kz</Text>
                     <Text style={{fontSize:11,color:'#000',marginTop:3,fontFamily:'Montserrat-Regular'}}>
-                        {item.nome}
+                        {item.name}
                     </Text>
                 </View>
             </View>
@@ -59,8 +58,8 @@ const Adicionar = ({add,item}) =>
     return(
         <TouchableOpacity activeOpacity={0.4} style={{borderColor:verde,borderWidth:1,height:'18%',
         borderRadius:10, justifyContent:'center',alignItems:'center'}}
-        onPress={()=>add(item)}>
-                <Text style={{color:verde,fontFamily:'Montserrat-Regular'}}>Adicionar</Text>
+        onPress={()=>add(item)} disabled={item.isAvable ? false:true} >
+               {item.isAvable ? <Text style={{color:verde,fontFamily:'Montserrat-Regular'}}>Adicionar</Text>: <Text style={{color:verde,fontFamily:'Montserrat-Regular'}}>Indisponivel</Text>}
             </TouchableOpacity>
     )
 }

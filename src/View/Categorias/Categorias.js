@@ -1,5 +1,5 @@
 import { Icon } from 'native-base'
-import React,{useEffect,useState} from 'react'
+import React,{useEffect,useState,useContext} from 'react'
 import { View, Text, TextInput,ActivityIndicator} from 'react-native'
 import CategoriaCard from '../Components/CategoriaCard'
 import styles from './Style'
@@ -18,35 +18,18 @@ import Lacticios from '../../assets/svg/Grupo 263.svg'
 import Bioseguranca from '../../assets/svg/Caminho 170.svg'
 import Higiene from '../../assets/svg/artigos-de-higiene-pessoal.svg'
 
+//Context
+import { Produtos } from "../../data/Contexts/ContextProdutos";
 
-//Dados
-import CategoriaData ,{getCategorias} from '../../data/API'
-import axios from 'axios'
+import firestore from '@react-native-firebase/firestore';
 
-
-const categorias = [1,2,3,4,5,6,7,8,9,10,11,12]
 export default function Categorias() 
 {
-    const [categorias, setcategorias] = useState([])
-    useEffect(() =>
-    {
-        //getData()
-        APICall()
-    },[])
-    const APICall = async()=> getCategorias()
-    async function getData() 
-    {
-        axios.get("https://baratoserver.herokuapp.com/api/v1/categories").
-        then((resposta)=>
-        {
-            //console.log(resposta.data)
-            setcategorias(resposta.data)
-        }).catch((erro)=>
-        {
-            console.log(erro)
-        })
+    const {getCategorias,categorias,PesquisaCategoria} = useContext(Produtos)  
+    useEffect(()=>{getCategorias(setloading)},[]) 
 
-    }
+    const [loading, setloading] = useState(true)
+
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
@@ -61,7 +44,9 @@ export default function Categorias()
                     </View>
                 </View>
                 <View style={styles.inputWraper}>
-                    <TextInput placeholder={"Pesquisar"}
+                    <TextInput placeholder={"Pesquisar"} 
+                    
+                    onChangeText={texto=> PesquisaCategoria(texto)}
                         style={{width:'80%'}}
                         placeholderTextColor={'#ccc'}/>
                     <Icon name="search-outline" type='Ionicons' style={styles.iconSearch}/>
@@ -73,13 +58,16 @@ export default function Categorias()
                 <Text style={styles.txtCategorias}>Categorias</Text>
             </View>
             <View style={styles.categoriasWraper}>
-                
                {
-                 categorias.map((dados, key)=>(
+                   loading ? 
+                   <View style={{width:'100%',height:'60%',alignItems:'center',justifyContent:'center'}}>
+                            <ActivityIndicator size="large" color="#00ff00"/>
+                   </View>
+                   
+                   : categorias.map((dados,key)=>(
                     <CategoriaCard key={key}  data={dados}/>
                    ))
                }
-
             </View>
         </View>
         </View>
