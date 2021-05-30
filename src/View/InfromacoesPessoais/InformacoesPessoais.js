@@ -1,5 +1,5 @@
 import { Icon } from 'native-base';
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { Modal, Text, View ,TouchableOpacity,TextInput,KeyboardAvoidingView,ActivityIndicator} from 'react-native'
 import style from "./Style";
 
@@ -7,10 +7,19 @@ import style from "./Style";
 //SVGs
 import IconEditar from "../../assets/svg/pencil-square.svg";
 import IconAlteradoSucesso from "../../assets/svg/Grupo 556.svg";
-const InformacoesPessoais = ({navigation}) => 
+
+//Context
+import {UserContext} from "../../data/Contexts/ContextUsuario";
+const InformacoesPessoais = ({navigation,route}) => 
 {
+    const { updateUser } = useContext(UserContext)
+    const {user} = route.params
     const [modalVisivel, setmodalVisivel] = useState(false)
-    const modalToggle =()=> setmodalVisivel(!modalVisivel)
+    const modalToggle =()=> navigation.goBack()
+
+    const [nome, setnome] = useState(user.name)
+    const [email, setemail] = useState(user.email)
+    const [tel, setTel] = useState(user.tel)
     return (
         <View style={style.container}>
             <View style={{marginTop:5}}>
@@ -27,7 +36,7 @@ const InformacoesPessoais = ({navigation}) =>
                     <Text style={style.txtinfoItens}>Nome completo</Text>
                     <View style={style.inputContainerView}>
                        <View style={style.inputIcon}>
-                            <TextInput style={style.txtInput} value="Kakidiako Afonso Antonio" 
+                            <TextInput style={style.txtInput} value={nome} onChangeText={e=> setnome(e)}
                                 />
                             <TouchableOpacity style={{marginRight:15}}>
                                 <IconEditar width={20} height={20}/>
@@ -40,8 +49,8 @@ const InformacoesPessoais = ({navigation}) =>
                     <Text style={style.txtinfoItens}>E-mail</Text>
                     <View style={style.inputContainerView}>
                        <View style={style.inputIcon}>
-                            <TextInput style={style.txtInput} keyboardType='email-address' value="kakidiakoafonso@gmail.com" 
-                                />
+                            <TextInput style={style.txtInput} keyboardType='email-address' value={email}
+                                onChangeText={e=> setemail(e)}/>
                             <TouchableOpacity style={{marginRight:15}}>
                                 <IconEditar width={20} height={20}/>
                             </TouchableOpacity>
@@ -52,7 +61,7 @@ const InformacoesPessoais = ({navigation}) =>
                     <Text style={style.txtinfoItens}>Número de telefone</Text>
                     <View style={style.inputContainerView}>
                        <View style={style.inputIcon}>
-                            <TextInput style={style.txtInput} keyboardType='phone-pad' value="945176405" 
+                            <TextInput style={style.txtInput} keyboardType='phone-pad' value={tel} onChangeText={e=> setTel(e)}
                                 />
                             <TouchableOpacity style={{marginRight:15}}>
                                 <IconEditar width={20} height={20}/>
@@ -62,7 +71,7 @@ const InformacoesPessoais = ({navigation}) =>
                 </View>
             </KeyboardAvoidingView>
             <TouchableOpacity activeOpacity={0.6} style={style.btnSalvar}
-                onPress={()=>modalToggle()}>
+                onPress={()=> updateUser(nome,email,tel,setmodalVisivel)}>
                     <Text style={style.txtSalvar}>Salvar</Text>
             </TouchableOpacity>
             <Modal visible={modalVisivel} transparent>

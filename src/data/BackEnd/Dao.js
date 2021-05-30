@@ -66,8 +66,8 @@ export default DAO = {
         })
 
     },
-    getFavoritos: async function(userId,set){
-        console.warn("Deu");
+    getFavoritos: async function(userId,set)
+    {
         // await firestore().collection('cliente').doc(
         //     'wvWKRqW1bHW1LzhhxRVb'
         //     ).get().then(data =>{
@@ -81,8 +81,32 @@ export default DAO = {
         console.log(doc)
         
     },
-    getUserInfo: async function (){
+    getUserInfo: async function (setuser)
+    {
+       
+        const dados = await firestore().collection('cliente').doc("wvWKRqW1bHW1LzhhxRVb").get().then(
+            resultado =>{
+                console.log(resultado.data())
+                setuser(resultado.data())
+            },
+            rejeitado =>{
+                console.log(rejeitado);
+            }
+        )
 
+    },
+    updateUser: async function (nome,email,tel,setModal){
+        //console.log(nome+" "+email+" "+tel);
+        firestore().collection('cliente').doc('wvWKRqW1bHW1LzhhxRVb').update({
+            name:nome,
+            email: email,
+            tel:tel
+        }).then(
+            resultado=> {
+                setModal(true)
+        },
+            rejeitado=> {console.log(rejeitado)}
+        )
     }
 }
 

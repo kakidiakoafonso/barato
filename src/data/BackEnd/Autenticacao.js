@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/core';
 import { ToastAndroid } from "react-native";
 
 //Contexts
@@ -19,17 +20,31 @@ const storeToken = async (token) => {
 export default Autenticacao = 
 {
   
-    AutententicarComEmailESenha: async function (email,senha)
+    AutententicarComEmailESenha: async function (email,senha,setlogado)
     {
+      
       try {
-        const dados = await auth().signInWithEmailAndPassword(email,senha)
-        console.log(dados.user.uid)
-        // storeToken(dados.user.uid)
-          ToastAndroid.showWithGravity(
-            "Login aceite "+dados.user.displayName,
-            ToastAndroid.SHORT,
-            ToastAndroid.CENTER
-          );
+        const dados = await auth().signInWithEmailAndPassword(email,senha).then(
+          certo =>{
+            
+              ToastAndroid.showWithGravity(
+                "Login aceite",
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+              setlogado(true)
+              useNavigation().navigate("tab")
+          },
+          rejeitado=>{
+            
+            ToastAndroid.showWithGravity(
+              "Erro na autenticacao",
+              ToastAndroid.SHORT,
+              ToastAndroid.CENTER
+            );
+          }
+        )
+       
       } catch (error) 
       {
         ToastAndroid.showWithGravity(

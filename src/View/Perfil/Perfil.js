@@ -54,13 +54,12 @@ export default function Perfil({navigation})
                     <Text style={style.perfilViewTxt}>Perfil</Text>
                 </View>
                 <View style={style.profileView}>
-                    <View style={{width:80,height:80,
-                        backgroundColor:'#ccc',borderRadius:40}}>
-                    </View>
+                    <Image source={{uri: user.image}} style={{width:80,height:80,borderRadius:40}}>
+                    </Image>
                     <View style={{marginLeft:10}}>
-                        <Text style={[style.txtProfileView,style.txtProfileViewName]}>Kakidiako Afonso</Text>
-                        <Text style={style.txtProfileView}>945 176 405</Text>
-                        <Text style={style.txtProfileView}>kakidiakoafonso@gmail.com</Text>
+                        <Text style={[style.txtProfileView,style.txtProfileViewName]}>{user.name}</Text>
+                        <Text style={style.txtProfileView}>{user.tel} </Text>
+                        <Text style={style.txtProfileView}>{user.email}</Text>
                     </View>
                 </View>
 
@@ -85,7 +84,7 @@ export default function Perfil({navigation})
             <View style={{flex:1}}>
                 <View style={[style.wraper,{marginTop:45}]}>
                     <TouchableOpacity  style={style.wraperItens}
-                        onPress={()=>navigation.navigate('informacoespessoais')}>
+                        onPress={()=>navigation.navigate('informacoespessoais',{user:user})}>
                         <View style={style.wraperItens}>
                             <PersonIcon width={20} height={20} />
                             <Text style={style.txtWraperItens}>Informações pessoais</Text>

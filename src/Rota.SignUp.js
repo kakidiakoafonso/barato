@@ -28,7 +28,6 @@ export default function SignUpRoute()
   return (
     <ContextUsuario>
       <GlobalConfigContext>
-                  <NavigationContainer>
                     <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='loginEmail'>
                           <Stack.Screen name='splash' component={Splash} />
                           <Stack.Screen name='sign' component={Sign}  />
@@ -39,7 +38,6 @@ export default function SignUpRoute()
                           <Stack.Screen name='enderecos' component={Enderecos} />
                           <Stack.Screen name='detail' component={Detail}/>
                     </Stack.Navigator>
-                  </NavigationContainer>
         </GlobalConfigContext>
     </ContextUsuario>
   );

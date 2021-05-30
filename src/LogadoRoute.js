@@ -56,7 +56,6 @@ export default function SignInRoute()
     <ContextUsuario>
       <ContextProdutos>
         <ContextCarrinho>
-                  <NavigationContainer>
                     <Stack.Navigator screenOptions={{headerShown:false}} initialRouteName='tab'>
                           <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
                           <Stack.Screen  name='detail' component={Detail} />
@@ -69,7 +68,6 @@ export default function SignInRoute()
                           <Stack.Screen name='produtosrelacionados' component={ProdutosRelacionados}/>
                           <Stack.Screen name={'tab'} component={TabRoute} options={{headerShown:false}}/>
                     </Stack.Navigator>
-                  </NavigationContainer>
         </ContextCarrinho>
     </ContextProdutos>
     </ContextUsuario>

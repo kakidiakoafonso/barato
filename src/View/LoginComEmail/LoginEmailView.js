@@ -1,23 +1,39 @@
-import React,{useState}  from 'react'
-import { View,Image,Text,TouchableOpacity, TextInput,KeyboardAvoidingView} from 'react-native'
+import React,{useState,useContext}  from 'react'
+import { View,Image,Text,TouchableOpacity, TextInput,KeyboardAvoidingView,ToastAndroid} from 'react-native'
 import { Divider } from 'react-native-elements'
 import styles from './Style'
 
 //BackEnd
 import Autenticacao from "../../data/BackEnd/Autenticacao";
+//Context
 
+import { UserContext } from "../../data/Contexts/ContextUsuario";
+import { useNavigation } from '@react-navigation/core';
 const corPrimaria = '#2CBF88'
 
 export default function LoginComEmail({navigation}) 
 {
+
+    const {logado, setlogado} = useContext(UserContext)
     const [email, setemail] = useState('')
     const [senha, setsenha] = useState("")
-
-    const logar= ()=>
+    const logar= ( )=>
     {
-        const Senha = senha
-        const Email = email
-        Autenticacao.AutententicarComEmailESenha(Email,Senha)
+        console.warn("Clicou");
+        setlogado(!logado)
+       //setlogado(true)
+        // const Senha = senha
+        // const Email = email
+        // if(Senha.length>0 && Email.length>0)
+        //     Autenticacao.AutententicarComEmailESenha(Email,Senha,setlogado)
+        // else
+        //     {
+        //         ToastAndroid.showWithGravity(
+        //             "Email ou senha vazia",
+        //             ToastAndroid.SHORT,
+        //             ToastAndroid.CENTER
+        //           );
+        //     }
         
     }
     return (
@@ -30,7 +46,7 @@ export default function LoginComEmail({navigation})
             <KeyboardAvoidingView behavior='padding' style={styles.contentView}>
                 <View style={{height:'55%',width:300,justifyContent:'space-between'}}>
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                        <Text>Entre na sua conta</Text>
+                        {logado ? <Text>Logado</Text>:<Text>Nao logado</Text> }
                         <TouchableOpacity onPress={()=>logar()}>
                             <Text style={styles.txtConfirmar}>ENTRAR</Text>
                         </TouchableOpacity>
