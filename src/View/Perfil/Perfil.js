@@ -23,6 +23,8 @@ import Logout from './Components/Logout'
 //Context
 import {UserContext} from '../../data/Contexts/ContextUsuario'
 
+//Functions
+import Autenticacao from "../../data/BackEnd/Autenticacao";
 
 export default function Perfil({navigation}) 
 {
@@ -30,9 +32,8 @@ export default function Perfil({navigation})
     const [remover, setremover] = useState(true)
 
     const modalToggle =()=> setmostraModal(!mostraModal)
-
-    const {user,getUserInfo} = useContext(UserContext)
-    useEffect(()=> getUserInfo(),[])
+    const sair = ()=> {Autenticacao.signOutEmailESenha() } 
+    const {user} = useContext(UserContext)
     return (
         <View style={style.container}>
 
@@ -43,7 +44,7 @@ export default function Perfil({navigation})
             visible={mostraModal}>
                 <View style={style.Modal}>
                     {
-                       remover? <RemoveAccount modalToggle={modalToggle}/>:<Logout modalToggle={modalToggle}/>
+                       remover? <RemoveAccount modalToggle={modalToggle}/>:<Logout  modalToggle={modalToggle}/>
                     }
                 </View>
         </Modal>
@@ -130,6 +131,7 @@ export default function Perfil({navigation})
                         { 
                             modalToggle()
                             setremover(false)
+                            
                         }}>
                         <View style={style.wraperItens}>
                             <LogoutIcon width={20} height={20} />

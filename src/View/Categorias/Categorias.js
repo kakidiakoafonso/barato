@@ -5,37 +5,26 @@ import CategoriaCard from '../Components/CategoriaCard'
 import styles from './Style'
 
 
-//SVG's
-import Frutas from '../../assets/svg/healthy-food.svg'
-import Pestisco from '../../assets/svg/Grupo 280.svg'
-import Condimento from '../../assets/svg/condimentos.svg'
-import Alcool from '../../assets/svg/Grupo 259.svg'
-import Bebidas from '../../assets/svg/Grupo 258.svg'
-
-import Padaria from '../../assets/svg/Grupo 264.svg'
-import Cha from '../../assets/svg/Grupo 293.svg'
-import Lacticios from '../../assets/svg/Grupo 263.svg'
-import Bioseguranca from '../../assets/svg/Caminho 170.svg'
-import Higiene from '../../assets/svg/artigos-de-higiene-pessoal.svg'
 
 //Context
 import { Produtos } from "../../data/Contexts/ContextProdutos";
+import { UserContext} from "../../data/Contexts/ContextUsuario";
 
-import firestore from '@react-native-firebase/firestore';
 
 export default function Categorias() 
 {
     const {getCategorias,categorias,PesquisaCategoria} = useContext(Produtos)  
+    const {token,getUserInfo} = useContext(UserContext)  
     useEffect(()=>{getCategorias(setloading)},[]) 
 
     const [loading, setloading] = useState(true)
-
+    useEffect(()=> getUserInfo(token),[])
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <View >
                     <View style={{flexDirection:'row',alignItems:'center'}}>
-                        <Text style={styles.txtPara}>Entrega para</Text>
+                        <Text style={styles.txtPara}>Entrega para {token}</Text>
                         <Icon name='down' type='AntDesign'style={styles.down}/>
                     </View>
                     <View style={{flexDirection:'row'}}>

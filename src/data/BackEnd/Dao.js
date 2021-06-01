@@ -1,5 +1,15 @@
 import firestore from '@react-native-firebase/firestore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+const storeToken = async (token) => 
+{
+  try {
+    await AsyncStorage.setItem('@barato_token', token)
+    console.log("Token salvo"+token);
+  } catch (e) {
+    console.log(e)
+  }
+}
 export default DAO = {
     setCategoria: async function(set,setloading)
     {
@@ -106,6 +116,20 @@ export default DAO = {
                 setModal(true)
         },
             rejeitado=> {console.log(rejeitado)}
+        )
+    }
+    ,
+    newUserAdd:async function (Email) 
+    {
+        await firestore().collection("cliente").add({ email: Email}).then(
+            good=>{
+                console.warn("Adicionado novo user no firebase");
+                storeToken(good.id)
+            },
+            error=>{
+                console.warn("Erro na criacao do novo user no firebase");
+                console.log(error);
+            }
         )
     }
 }

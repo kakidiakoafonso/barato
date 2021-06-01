@@ -48,6 +48,7 @@ import ContextCarrinho from './data/Contexts/ContextCarrinho';
 import ProdutosRelacionados from './View/Relacionados/ProdutosRelacionados';
 import Enderecos from './View/Enderecos/Enderecos';
 import MapaView from './View/Mapa/MapaView';
+import DetailTwo from './View/DetailTwo/DetailTwo';
 
 const Stack = createStackNavigator()
 
@@ -66,11 +67,13 @@ export default function SignInRoute()
                           <Stack.Screen name='mapa' component={MapaView}  />
                           <Stack.Screen name='loginEmail' component={LoginEmailView}  />
                           <Stack.Screen name='signuptelefone' component={SignUpTelefone} />
+                          <Stack.Screen name='verify' component={Verify} />
                           <Stack.Screen name='enderecos' component={Enderecos} />
                           <Stack.Screen name='detail' component={Detail}/>
                           {/* Logado */}
                           <Stack.Screen name={'categorias'} component={Categorias} options={{headerShown:false}}/>
                           
+                          <Stack.Screen  name='detailtwo' component={DetailTwo} />
                           <Stack.Screen  name='detailProduto' component={DetalheProduto} />
                           <Stack.Screen name='encomenda' component={Encomenda}/>
                           <Stack.Screen name='informacoespessoais' component={InformacoesPessoais}/>

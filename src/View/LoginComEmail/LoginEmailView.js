@@ -41,17 +41,17 @@ export default function LoginComEmail({navigation})
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                         
                         <TouchableOpacity onPress={()=>navigation.navigate('sign')}>
-                            <Text style={styles.txtConfirmar}>CRIAR CONTA</Text>
+                            <Text style={styles.txtConfirmar}>NÃO TENHO CONTA</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={()=>logar()}>
                             <Text style={styles.txtConfirmar}>ENTRAR</Text>
                         </TouchableOpacity>
                     </View>
                     <Divider style={{width:'100%',height:1,marginBottom:10,marginTop:10}}/>
-                    <View style={styles.inputContainer}>
+                    <KeyboardAvoidingView behavior='height' style={styles.inputContainer}>
                         <TextInput placeholder="Email" onChangeText={e=> setemail(e)} style={styles.detailInput}/>
                         <TextInput placeholder="Senha" onChangeText={e=> setsenha(e)} style={styles.detailInput}/>
-                    </View>
+                    </KeyboardAvoidingView>
                 </View>
             </KeyboardAvoidingView>
         </View>

@@ -1,6 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useNavigation } from '@react-navigation/core'
-import React,{useEffect} from 'react'
+import React,{useEffect,useContext} from 'react'
 import { StyleSheet,Image, View ,StatusBar} from 'react-native'
+import {UserContext} from '../data/Contexts/ContextUsuario'
 
 
 
@@ -9,13 +11,34 @@ const corSecudaria = '#313131'
 const corTerciaria = '#efefef'
 const Splash = () => 
 {
+    const {settoken} = useContext(UserContext)
     const navigation = useNavigation()
-    useEffect(() =>
-    {
-        setTimeout(() => {
-            navigation.navigate('loginEmail')
-        }, 4000);
-    }, [])
+    const getToken = async () => {
+        try 
+        {
+        const value = await AsyncStorage.getItem('@barato_token')
+        console.log(value)
+        if(value !== null) 
+        {
+           console.log("Value "+value);
+           settoken(value)
+           setTimeout(() => {
+                navigation.navigate('categorias')
+           }, 3000);
+        }
+        else{
+            setTimeout(() => {
+                navigation.navigate('loginEmail')
+            }, 3000);
+        }
+        } catch(e) {
+        
+            setTimeout(() => {
+                navigation.navigate('loginEmail')
+            }, 3000);
+        }
+    }
+    useEffect(() =>getToken())
     return (
         <View style={styles.container}>
             {/*<StatusBar backgroundColor={corPrimaria}/>*/}
@@ -23,6 +46,8 @@ const Splash = () =>
         </View>
     )
 }
+
+
 
 export default Splash
 

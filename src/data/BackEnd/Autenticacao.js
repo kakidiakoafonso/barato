@@ -1,22 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/core';
 import { ToastAndroid } from "react-native";
+import firestore from '@react-native-firebase/firestore';
 
-//Contexts
-// import { Configuracoes } from "../Contexts/GlobalConfigContext";
-
-// const {setToken} = useContext(Configuracoes)
-
-const storeToken = async (token) => {
-  try {
-    //await AsyncStorage.setItem('@storage_token', token)
-    console.log("Token salvo"+token);
-  } catch (e) {
-    // saving error
-    console.log(e)
-  }
-}
 export default Autenticacao = 
 {
   
@@ -24,7 +10,7 @@ export default Autenticacao =
     {
       
       try {
-        const dados = await auth().signInWithEmailAndPassword(email,senha).then(
+         await auth().signInWithEmailAndPassword(email,senha).then(
           certo =>{
             
               ToastAndroid.showWithGravity(
@@ -33,6 +19,7 @@ export default Autenticacao =
                 ToastAndroid.CENTER
               );
               navigation.navigate("categorias")
+              console.log(certo.additionalUserInfo)
           },
           rejeitado=>{
             
@@ -54,16 +41,47 @@ export default Autenticacao =
           console.log(error)
       }
     },
-    CriarContaEmailSenha: async function(email,senha)
+    CriarContaEmailSenha: async function(email,senha,navigation)
     {
-        auth().createUserWithEmailAndPassword(email,senha).then(
-          certo =>{
-            console.log(certo)
-          },
-          falhou=>{
-            console.log(falhou)
-          }
-        )
+        if(email=="" && senha=="")
+        {
+          ToastAndroid.showWithGravity(
+            "Preencha os campos",
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER
+          );
+        }
+        else
+        {
+          auth().createUserWithEmailAndPassword(email,senha).then(
+            certo =>{
+              
+              ToastAndroid.showWithGravity(
+                "Regitrado com sucesso",
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+              setTimeout(()=>{navigation.navigate('detailtwo',{uid: certo.user.email})},1500)
+            },
+            falhou=>
+            {
+              ToastAndroid.showWithGravity(
+                "Email já registado.",
+                ToastAndroid.SHORT,
+                ToastAndroid.CENTER
+              );
+            }
+          )
+        }
+    },
+    signOutEmailESenha: async function (navigation) {
+      try {
+        await AsyncStorage.removeItem('@barato_token').then(certo=>{navigation.navigate('loginEmail')})
+      } catch(e) {
+        console.log(e);
+        console.warn("Nao removido");
+        console.log(e);
+      }
     }
   }
 

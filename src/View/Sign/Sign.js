@@ -25,7 +25,8 @@ export default function Sign()
     const navega = () => 
     {
         signUpModalToggle()
-        navigation.navigate('signuptelefone')
+        navigation.navigate('detail')
+        // navigation.navigate('signuptelefone')
     }
 
 

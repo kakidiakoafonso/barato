@@ -1,7 +1,7 @@
-import React,{useState}  from 'react'
+import React,{useEffect}  from 'react'
 import { View,Image,Text,TouchableOpacity, TextInput,KeyboardAvoidingView} from 'react-native'
 import { Divider } from 'react-native-elements'
-import Autenticacao from '../../data/BackEnd/Autenticacao'
+import Dao from '../../data/BackEnd/Dao'
 import styles from './Style'
 
 
@@ -10,16 +10,11 @@ import styles from './Style'
 
 const corPrimaria = '#2CBF88'
 
-export default function Detail({navigation}) 
+export default function DetailTwo({navigation,route}) 
 {
-    const [senha, setsenha] = useState('')
-    const [email, setemail] = useState('')
-    const criarUser = async () => 
-    {
-        const mail = email
-        const pass = senha
-        Autenticacao.CriarContaEmailSenha(mail,pass,navigation)
-    }
+    //const {email} = route.params
+
+    const cli = (email)=>{Dao.newUserAdd(email)}
 
     return (
         <View style={styles.container}>
@@ -31,15 +26,15 @@ export default function Detail({navigation})
             <KeyboardAvoidingView behavior='padding' style={styles.contentView}>
                 <View style={{height:'55%',width:300,justifyContent:'space-between'}}>
                     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                        <Text>Detalhes</Text>
-                        <TouchableOpacity onPress={()=> criarUser()}>
+                        <Text>Detalhes pessoais</Text>
+                        <TouchableOpacity onPress={()=> cli("emailghhhh")}>
                             <Text style={styles.txtConfirmar}>CONFIRMAR</Text>
                         </TouchableOpacity>
                     </View>
                     <Divider style={{width:'100%',height:1,marginBottom:10,marginTop:10}}/>
                     <View style={styles.inputContainer}>
-                        <TextInput placeholder="E-mail" style={styles.detailInput} onChangeText={(e)=> setemail(e)}/>
-                        <TextInput placeholder="Senha" secureTextEntry style={styles.detailInput} onChangeText={(e)=> setsenha(e)}/>
+                        <TextInput placeholder="Nome completo" style={styles.detailInput}/>
+                        <TextInput placeholder="Telefone" style={styles.detailInput}/>
                     </View>
                 </View>
             </KeyboardAvoidingView>

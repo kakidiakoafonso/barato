@@ -1,5 +1,7 @@
+import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import Autenticacao from '../../../data/BackEnd/Autenticacao'
 
 
 //Cores
@@ -9,7 +11,12 @@ const  preto = '#323232'
 const  amarelo= '#c3e952'
 const  cinzaEscuro= '#cecece'
 
-const Logout = ({modalToggle}) => {
+const Logout = ({modalToggle}) => 
+{
+    const navigation = useNavigation()
+    const signOut = () => {
+        Autenticacao.signOutEmailESenha(navigation)
+    }
     return (
         <View style={{width:'85%',height:140,backgroundColor:'#fff',borderRadius:15,alignItems:'center',justifyContent:'space-around'}}>
             
@@ -19,7 +26,7 @@ const Logout = ({modalToggle}) => {
                     <TouchableOpacity  onPress={()=> modalToggle()}>
                     <Text style={{color:preto,fontWeight:'bold'}}>VOLTAR</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>signOut()}>
                         <Text style={{color:verde,fontWeight:'bold'}}>SAIR</Text>
                     </TouchableOpacity>
                 </View>
